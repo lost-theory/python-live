@@ -117,9 +117,9 @@ Why is Swaroop playing with that python?
 
 **How It Works**
 
-The `{}` patterns within the strings above are used by the `format` method to substitute values into the string using with corresponding arguments to the `format` method.
+The `{}` patterns within the strings above are used as placeholders for the `format` method to substitute values into the string.
 
-Observe the first usage where we use `{0}`, it corresponds to the variable `name` which is the first argument to the format method. Similarly, the second specification is `{1}` corresponding to `age` which is the second argument to the format method. Note that Python starts counting from 0 which means that first position is at index 0, second position is at index 1, and so on.
+Observe the first usage where we use `{0}`, it corresponds to the variable `name` which is the first argument to the format method. Similarly, the second specification is `{1}` corresponds to `age`, which is the second argument to the format method. Note that Python, like many other programming languages, starts counting from 0 which means that first position is at index 0, second position is at index 1, and so on.
 
 Notice that we could have achieved the same using string concatenation:
 
@@ -127,7 +127,7 @@ Notice that we could have achieved the same using string concatenation:
 name + ' is ' + str(age) + ' years old'
 ```
 
-but that is much uglier and error-prone. Second, the conversion to string would be done automatically by the `format` method instead of the explicit conversion to strings needed in this case. Third, when using the `format` method, we can change the message without having to deal with the variables used and vice-versa.
+But that is much uglier and error-prone: 1. The conversion of the variables into strings is done automatically by the `format` method, so we can avoid the explicit conversion to strings using `str`. 2. The `format` method allows us to cleanly separate out the message as a single string with placeholders, and the values as a list of items, without needing to manually join everything together with `+`.
 
 Also note that the numbers are optional, so you could have also written as:
 
@@ -139,7 +139,7 @@ print('{} was {} years old when he wrote this book'.format(name, age))
 print('Why is {} playing with that python?'.format(name))
 ```
 
-which will give the same exact output as the previous program.
+This will give the same exact output as the previous program.
 
 What Python does in the `format` method is that it substitutes each argument value into the place of the specification. There can be [more detailed specifications](https://docs.python.org/3/library/string.html#formatexamples) such as:
 
