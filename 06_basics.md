@@ -164,8 +164,12 @@ Swaroop wrote A Byte of Python
 Since we are discussing formatting, note that `print` always ends with an invisible "new line" character (`\n`) so that repeated calls to `print` will all print on a separate line each. To prevent this newline character from being printed, you can specify that it should `end` with a blank:
 
 ```python
+#Python 3:
 print('a', end='')
 print('b', end='')
+
+#Python 2:
+#This is not easily do-able with Python 2's "print" statement. See http://stackoverflow.com/a/493399.
 ```
 
 Output is:
@@ -177,9 +181,15 @@ ab
 Or you can `end` with a space:
 
 ```python
+#Python 3:
 print('a', end=' ')
 print('b', end=' ')
 print('c')
+
+#Python 2:
+print 'a',
+print 'b',
+print 'c'
 ```
 
 Output is:

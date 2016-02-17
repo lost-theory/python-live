@@ -1,6 +1,6 @@
 # Installation
 
-When we refer to "Python 3" in this book, we will be referring to any version of Python equal to or greater than version [Python {{ book.pythonVersion }}](https://www.python.org/downloads/).
+Before installing, you must decide which version of Python you want. Both Python 2 and 3 are available from [Python.org's official download page](https://www.python.org/downloads/).
 
 ## Installation on Windows
 
@@ -8,11 +8,9 @@ Visit https://www.python.org/downloads/ and download the latest version. The ins
 
 CAUTION: When you are given the option of unchecking any "optional" components, don't uncheck any.
 
-NOTE: For people who already know programming, if you are familiar with Docker, check out [Python in Docker](https://hub.docker.com/_/python/) and [Docker on Windows](https://docs.docker.com/windows/).
+### Command Prompt
 
-### DOS Prompt
-
-If you want to be able to use Python from the Windows command line i.e. the DOS prompt, then you need to set the PATH variable appropriately.
+If you want to be able to use Python from the Windows command prompt (sometimes called the DOS prompt), then you need to set the PATH variable appropriately.
 
 For Windows 2000, XP, 2003 , click on `Control Panel` -> `System` -> `Advanced` -> `Environment Variables`. Click on the variable named `PATH` in the _System Variables_ section, then select `Edit` and add `;C:\Python35` (please verify that this folder exists, it will be different for newer versions of Python) to the end of what is already there. Of course, use the appropriate directory name.
 
@@ -36,30 +34,32 @@ For Windows 7 and 8:
 - If the value was `%SystemRoot%\system32;` It will now become `%SystemRoot%\system32;C:\Python35` <!-- The directory should match pythonVersion variable in book.json -->
 - Click `OK` and you are done. No restart is required, however you may have to close and reopen the command line.
 
-### Running Python prompt on Windows
+### Running the Python prompt on Windows
 
-For Windows users, you can run the interpreter in the command line if you have [set the `PATH` variable appropriately](#dos-prompt).
+For Windows users, you can run the interpreter in the command line if you have set the `PATH` variable appropriately.
 
 To open the terminal in Windows, click the start button and click `Run`. In the dialog box, type `cmd` and press `[enter]` key.
 
-Then, type `python3` and ensure there are no errors.
+Then, type `python` (for Python 2) or `python3` (for Python 3) and ensure there are no errors.
 
 ## Installation on Mac OS X
 
-For Mac OS X users, use [Homebrew](http://brew.sh): `brew install python3`.
+For Mac OS X users, Python 2 is installed by default. You can use [Homebrew](http://brew.sh) to get Python 3: `brew install python3`.
 
-To verify, open the terminal by pressing `[Command + Space]` keys (to open Spotlight search), type `Terminal` and press `[enter]` key. Now, run `python3` and ensure there are no errors.
+To verify, open the terminal by pressing `[Command + Space]` keys (to open Spotlight search), type `Terminal` and press `[enter]` key. Now, run `python` (for Python 2) or `python3` (for Python 3) and ensure there are no errors.
 
 ## Installation on GNU/Linux
 
-For GNU/Linux users, use your distribution's package manager to install Python 3, e.g. on Debian & Ubuntu: `sudo apt-get update && sudo apt-get install python3`.
+For GNU/Linux users, Python 2 comes installed by default on most distributions. You can use your distribution's package manager to install Python 3, e.g. on Debian & Ubuntu: `sudo apt-get update && sudo apt-get install python3`.
 
-To verify, open the terminal by opening the +Terminal+ application or by pressing `[Alt + F2]` and entering +gnome-terminal+. If that doesn't work, please refer the documentation of your particular GNU/Linux distribution. Now, run `python3` and ensure there are no errors.
+To verify, open the terminal by opening the +Terminal+ application or by pressing `[Alt + F2]` and entering +gnome-terminal+. If that doesn't work, please refer the documentation of your particular GNU/Linux distribution. Now, run `python` (for Python 2) or `python3` (for Python 3) and ensure there are no errors.
 
 You can see the version of Python on the screen by running:
 
-<!-- The output should match pythonVersion variable in book.json -->
 ```
+$ python -V
+Python 2.7.6
+
 $ python3 -V
 Python 3.5.1
 ```

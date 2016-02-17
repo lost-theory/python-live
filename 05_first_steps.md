@@ -6,14 +6,14 @@ There are two ways of using Python to run your program - using the interactive i
 
 ## Using The Interpreter Prompt
 
-Open the terminal in your operating system (as discussed previously in the [Installation](./04_installation.md) chapter) and then open the Python prompt by typing `python3` and pressing `[enter]` key.
+Open the terminal in your operating system (as discussed previously in the [Installation](./04_installation.md) chapter) and then open the Python prompt by typing `python` and pressing `[enter]` key.
 
 Once you have started Python, you should see `>>>` where you can start typing stuff. This is called the _Python interpreter prompt_.
 
 At the Python interpreter prompt, type:
 
 ```python
-print("Hello World")
+print "Hello World"
 ```
 
 followed by the `[enter]` key. You should see the words `Hello World` printed to the screen.
@@ -22,11 +22,11 @@ Here is an example of what you should be seeing, when using a Mac OS X computer.
 
 <!-- The output should match pythonVersion variable in book.json -->
 ```python
-> python3
-Python 3.5.1 (default, Jan 14 2016, 06:54:11)
-[GCC 4.2.1 Compatible Apple LLVM 7.0.2 (clang-700.1.81)] on darwin
+> python
+Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
+[GCC 4.8.2] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
->>> print("Hello World")
+>>> print "Hello World"
 Hello World
 ```
 
@@ -34,9 +34,7 @@ Notice that Python gives you the output of the line immediately! What you just e
 
 ### How to Quit the Interpreter Prompt
 
-If you are using a GNU/Linux or OS X shell, you can exit the interpreter prompt by pressing `[ctrl + d]` or entering `exit()` (note: remember to include the parentheses, `()`) followed by the `[enter]` key.
-
-If you are using the Windows command prompt, press `[ctrl + z]` followed by the `[enter]` key.
+If you are using a GNU/Linux or OS X shell, you can exit the interpreter prompt by pressing `[ctrl + d]`. If you are using the Windows command prompt, press `[ctrl + z]` followed by the `[enter]` key. On any platform you can enter `exit()` or `quit()` (note: remember to include the parentheses, `()`) followed by the `[enter]` key.
 
 ## Choosing An Editor
 

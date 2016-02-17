@@ -54,7 +54,7 @@ Example:
 
 ```python
 from math import sqrt
-print("Square root of 16 is", sqrt(16))
+print("Square root of 16 is {}".format(sqrt(16)))
 ```
 
 ## A module's `__name__`
