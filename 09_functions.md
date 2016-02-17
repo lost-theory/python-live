@@ -66,7 +66,7 @@ Next, we assign the value `2` to `x`. The name `x` is local to our function.  So
 
 With the last `print` statement, we display the value of `x` as defined in the main block, thereby confirming that it is actually unaffected by the local assignment within the previously called function.
 
-## The `global` statement {#global-statement}
+## The `global` statement
 
 If you want to assign a value to a name defined at the top level of the program (i.e. not inside any kind of scope such as functions or classes), then you have to tell Python that the name is not local, but it is *global*. We do this using the `global` statement. It is impossible to assign a value to a variable defined outside a function without the `global` statement.
 
@@ -86,7 +86,7 @@ The `global` statement is used to declare that `x` is a global variable - hence,
 
 You can specify more than one global variable using the same `global` statement e.g. `global x, y, z`.
 
-## Default Argument Values {#default-arguments}
+## Default Argument Values
 
 For some functions, you may want to make some parameters *optional* and use default values in case the user does not want to provide values for them. This is done with the help of default argument values. You can specify default argument values for parameters by appending to the parameter name in the function definition the assignment operator (`=`) followed by the default value.
 
@@ -155,9 +155,9 @@ When we declare a starred parameter such as `*param`, then all the positional ar
 
 Similarly, when we declare a double-starred parameter such as `**param`, then all the keyword arguments from that point till the end are collected as a dictionary called 'param'.
 
-We will explore tuples and dictionaries in a [later chapter](./data_structures.md#data-structures).
+We will explore tuples and dictionaries in a [later chapter](./11_data_structures.md#data-structures).
 
-## The `return` statement {#return-statement}
+## The `return` statement
 
 The `return` statement is used to *return* from a function i.e. break out of the function. We can optionally *return a value* from the function as well.
 
@@ -200,11 +200,11 @@ Output:
 
 **How It Works**
 
-A string on the first logical line of a function is the *docstring* for that function. Note that DocStrings also apply to [modules](./modules.md#modules) and [classes](./oop.md#oop) which we will learn about in the respective chapters.
+A string on the first logical line of a function is the *docstring* for that function. Note that DocStrings also apply to [modules](./10_modules.md#modules) and [classes](./13_oop.md#oop) which we will learn about in the respective chapters.
 
 The convention followed for a docstring is a multi-line string where the first line starts with a capital letter and ends with a dot. Then the second line is blank followed by any detailed explanation starting from the third line. You are *strongly advised* to follow this convention for all your docstrings for all your non-trivial functions.
 
-We can access the docstring of the `print_max` function using the `__doc__` (notice the *double underscores*) attribute (name belonging to) of the function. Just remember that Python treats *everything* as an object and this includes functions. We'll learn more about objects in the chapter on [classes](./oop.md#oop).
+We can access the docstring of the `print_max` function using the `__doc__` (notice the *double underscores*) attribute (name belonging to) of the function. Just remember that Python treats *everything* as an object and this includes functions. We'll learn more about objects in the chapter on [classes](./13_oop.md#oop).
 
 If you have used `help()` in Python, then you have already seen the usage of docstrings! What it does is just fetch the `__doc__` attribute of that function and displays it in a neat manner for you. You can try it out on the function above - just include `help(print_max)` in your program. Remember to press the `q` key to exit `help`.
 

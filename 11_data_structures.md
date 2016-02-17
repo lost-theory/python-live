@@ -1,4 +1,4 @@
-# Data Structures {#data-structures}
+# Data Structures
 
 Data structures are basically just that - they are *structures* which can hold some *data* together. In other words, they are used to store a collection of related data.
 
@@ -12,7 +12,7 @@ The list of items should be enclosed in square brackets so that Python understan
 
 ## Quick Introduction To Objects And Classes
 
-Although I've been generally delaying the discussion of objects and classes till now, a little explanation is needed right now so that you can understand lists better. We will explore this topic in detail in a [later chapter](./oop.md#oop).
+Although I've been generally delaying the discussion of objects and classes till now, a little explanation is needed right now so that you can understand lists better. We will explore this topic in detail in a [later chapter](./13_oop.md#oop).
 
 A list is an example of usage of objects and classes. When we use a variable `i` and assign a value to it, say integer `5` to it, you can think of it as creating an *object* (i.e. instance) `i` of *class* (i.e. type) `int`. In fact, you can read `help(int)` to understand this better.
 
@@ -213,7 +213,7 @@ Remember that if you want to make a copy of a list or such kinds of sequences or
 > 
 > Remember that an assignment statement for lists does **not** create a copy. You have to use slicing operation to make a copy of the sequence.
 
-## More About Strings {#more-strings}
+## More About Strings
 
 We have already discussed strings in detail earlier. What more can there be to know?  Well, did you know that strings are also objects and have methods which do everything from checking part of a string to stripping spaces!
 

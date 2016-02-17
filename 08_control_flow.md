@@ -1,4 +1,4 @@
-# Control Flow {#control-flow}
+# Control Flow
 
 In the programs we have seen till now, there has always been a series of statements faithfully executed by Python in exact top-down order. What if you wanted to change the flow of how it works? For example, you want the program to take some decisions and do different things depending on different situations, such as printing 'Good Morning' or 'Good Evening' depending on the time of the day?
 
@@ -19,7 +19,7 @@ Output:
 
 **How It Works**
 
-In this program, we take guesses from the user and check if it is the number that we have. We set the variable +number+ to any integer we want, say `23`. Then, we take the user's guess using the `input()` function. Functions are just reusable pieces of programs. We'll read more about them in the [next chapter](./functions.md#functions).
+In this program, we take guesses from the user and check if it is the number that we have. We set the variable +number+ to any integer we want, say `23`. Then, we take the user's guess using the `input()` function. Functions are just reusable pieces of programs. We'll read more about them in the [next chapter](./09_functions.md#functions).
 
 We supply a string to the built-in `input` function which prints it to the screen and waits for input from the user. Once we enter something and press kbd:[enter] key, the `input()` function returns what we entered, as a string. We then convert this string to an integer using `int` and then store it in the variable `guess`. Actually, the `int` is a class but all you need to know right now is that you can use it to convert a string to an integer (assuming the string contains a valid integer in the text).
 
@@ -46,7 +46,7 @@ Even though this is a very simple program, I have been pointing out a lot of thi
 
 > **Note for C/C++ Programmers**
 > 
-> There is no `switch` statement in Python. You can use an `if..elif..else` statement to do the same thing (and in some cases, use a [dictionary](./data_structures.md#dictionary) to do it quickly)
+> There is no `switch` statement in Python. You can use an `if..elif..else` statement to do the same thing (and in some cases, use a [dictionary](./11_data_structures.md#dictionary) to do it quickly)
 
 ## The while Statement
 
@@ -76,7 +76,7 @@ The `True` and `False` are called Boolean types and you can consider them to be 
 
 ## The `for` loop
 
-The `for..in` statement is another looping statement which *iterates* over a sequence of objects i.e. go through each item in a sequence. We will see more about [sequences](./data_structures.md#sequence) in detail in later chapters. What you need to know right now is that a sequence is just an ordered collection of items.
+The `for..in` statement is another looping statement which *iterates* over a sequence of objects i.e. go through each item in a sequence. We will see more about [sequences](./11_data_structures.md#sequence) in detail in later chapters. What you need to know right now is that a sequence is just an ordered collection of items.
 
 Example (save as `for.py`):
 
@@ -92,7 +92,7 @@ In this program, we are printing a *sequence* of numbers. We generate this seque
 
 What we do here is supply it two numbers and `range` returns a sequence of numbers starting from the first number and up to the second number. For example, `range(1,5)` gives the sequence `[1, 2, 3, 4]`. By default, `range` takes a step count of 1. If we supply a third number to `range`, then that becomes the step count. For example, `range(1,5,2)` gives `[1,3]`. Remember that the range extends *up to* the second number i.e. it does *not* include the second number.
 
-Note that `range()` generates a sequence of numbers all at once, so this is safe to use only for small ranges. If you want a long range but generated only one number at a time, then use `xrange()`. Lists are explained in the [data structures chapter](./data_structures.md#data-structures).
+Note that `range()` generates a sequence of numbers all at once, so this is safe to use only for small ranges. If you want a long range but generated only one number at a time, then use `xrange()`. Lists are explained in the [data structures chapter](./11_data_structures.md#data-structures).
 
 The `for` loop then iterates over this range - `for i in range(1,5)` is equivalent to `for i in [1, 2, 3, 4]` which is like assigning each number (or object) in the sequence to i, one at a time, and then executing the block of statements for each value of `i`.  In this case, we just print the value in the block of statements.
 
@@ -106,7 +106,7 @@ Remember that the `for..in` loop works for any sequence. Here, we have a list of
 > 
 > In C/C++, if you want to write `for (int i = 0; i < 5; i++)`, then in Python you write just `for i in range(0,5)`. As you can see, the `for` loop is simpler, more expressive and less error prone in Python.
 
-## The break Statement {#break-statement}
+## The break Statement
 
 The `break` statement is used to *break* out of a loop statement i.e. stop the execution of a looping statement, even if the loop condition has not become `False` or the sequence of items has not been completely iterated over.
 
@@ -141,7 +141,7 @@ if you wanna make your work also fun:
     use Python!
 ```
 
-## The `continue` Statement {#continue-statement}
+## The `continue` Statement
 
 The `continue` statement is used to tell Python to skip the rest of the statements in the current loop block and to *continue* to the next iteration of the loop.
 

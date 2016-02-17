@@ -26,7 +26,7 @@ If it was not a compiled module i.e. a module written in Python, then the Python
 
 The `argv` variable in the `sys` module is accessed using the dotted notation i.e. `sys.argv`. It clearly indicates that this name is part of the `sys` module. Another advantage of this approach is that the name does not clash with any `argv` variable used in your program.
 
-The `sys.argv` variable is a *list* of strings (lists are explained in detail in a [later chapter](./data_structures.md#data-structures). Specifically, the `sys.argv` contains the list of *command line arguments* i.e. the arguments passed to your program using the command line.
+The `sys.argv` variable is a *list* of strings (lists are explained in detail in a [later chapter](./11_data_structures.md#data-structures). Specifically, the `sys.argv` contains the list of *command line arguments* i.e. the arguments passed to your program using the command line.
 
 If you are using an IDE to write and run these programs, look for a way to specify command line arguments to the program in the menus.
 
@@ -38,13 +38,13 @@ The `sys.path` contains the list of directory names where modules are imported f
 
 Note that the current directory is the directory from which the program is launched. Run `import os; print(os.getcwd())` to find out the current directory of your program.
 
-## Byte-compiled .pyc files {#pyc}
+## Byte-compiled .pyc files
 
-Importing a module is a relatively costly affair, so Python does some tricks to make it faster. One way is to create *byte-compiled* files with the extension `.pyc` which is an intermediate form that Python transforms the program into (remember the [introduction section](./about_python.md#interpreted) on how Python works?). This `.pyc` file is useful when you import the module the next time from a different program - it will be much faster since a portion of the processing required in importing a module is already done. Also, these byte-compiled files are platform-independent.
+Importing a module is a relatively costly affair, so Python does some tricks to make it faster. One way is to create *byte-compiled* files with the extension `.pyc` which is an intermediate form that Python transforms the program into (remember the [introduction section](./03_about_python.md#interpreted) on how Python works?). This `.pyc` file is useful when you import the module the next time from a different program - it will be much faster since a portion of the processing required in importing a module is already done. Also, these byte-compiled files are platform-independent.
 
 NOTE: These `.pyc` files are usually created in the same directory as the corresponding `.py` files. If Python does not have permission to write to files in that directory, then the `.pyc` files will _not_ be created.
 
-## The from..import statement {#from-import-statement}
+## The from..import statement
 
 If you want to directly import the `argv` variable into your program (to avoid typing the `sys.` everytime for it), then you can use the `from sys import argv` statement.
 
@@ -57,7 +57,7 @@ from math import sqrt
 print("Square root of 16 is", sqrt(16))
 ```
 
-## A module's `__name__` {#module-name}
+## A module's `__name__`
 
 Every module has a name and statements in a module can find out the name of their module. This is handy for the particular purpose of figuring out whether the module is being run standalone or being imported. As mentioned previously, when a module is imported for the first time, the code it contains gets executed. We can use this to make the module behave in different ways depending on whether it is being used by itself or being imported from another module. This can be achieved using the `__name__` attribute of the module.
 
@@ -121,7 +121,7 @@ This will import all public names such as `say_hi` but would not import `__versi
 > 
 > One of Python's guiding principles is that "Explicit is better than Implicit". Run `import this` in Python to learn more.
 
-## The `dir` function {#dir-function}
+## The `dir` function
 
 You can use the built-in `dir` function to list the identifiers that an object defines. For example, for a module, the identifiers include the functions, classes and variables defined in that module.
 

@@ -65,7 +65,7 @@ All white space i.e. spaces and tabs, within the quotes, are preserved as-is.
 
 Strings in double quotes work exactly the same way as strings in single quotes. An example is `"What's your name?"`.
 
-### Triple Quotes {#triple-quotes}
+### Triple Quotes
 
 You can specify multi-line strings using triple quotes - (`"""` or `'''`). You can use single quotes and double quotes freely within the triple quotes. An example is:
 
@@ -242,7 +242,7 @@ Variables are examples of identifiers. _Identifiers_ are names given to identify
 
 ## Data Types
 
-Variables can hold values of different types called _data types_. The basic types are numbers and strings, which we have already discussed. In later chapters, we will see how to create our own types using [classes](./oop.md#classes).
+Variables can hold values of different types called _data types_. The basic types are numbers and strings, which we have already discussed. In later chapters, we will see how to create our own types using [classes](./13_oop.md#classes).
 
 ## Object
 
@@ -258,18 +258,7 @@ We will now see how to use variables along with literal constants. Save the foll
 
 Henceforth, the standard procedure to save and run a Python program is as follows:
 
-### For PyCharm
-
-1. Open [PyCharm](./first_steps.md#pycharm).
-2. Create new file with the filename mentioned.
-3. Type the program code given in the example.
-4. Right-click and run the current file.
-
-NOTE: Whenever you have to provide [command line arguments](./modules.md#modules), click on `Run` -> `Edit Configurations` and type the arguments in the `Script parameters:` section and click the `OK` button:
-
-![PyCharm command line arguments](./img/pycharm_command_line_arguments.png)
-
-### For other editors
+### Using a text editor
 
 1. Open your editor of choice.
 2. Type the program code given in the example.
@@ -321,62 +310,7 @@ An example of a logical line is a statement like `print 'hello world'` - if this
 
 Implicitly, Python encourages the use of a single statement per line which makes code more readable.
 
-If you want to specify more than one logical line on a single physical line, then you have to explicitly specify this using a semicolon (`;`) which indicates the end of a logical line/statement. For example:
-
-```python
-i = 5
-print(i)
-```
-
-is effectively same as
-
-```python
-i = 5;
-print(i);
-```
-
-which is also same as
-
-```python
-i = 5; print(i);
-```
-
-and same as
-
-```python
-i = 5; print(i)
-```
-
-However, I *strongly recommend* that you stick to *writing a maximum of a single logical line on each single physical line*. The idea is that you should never use the semicolon. In fact, I have _never_ used or even seen a semicolon in a Python program.
-
-There is one kind of situation where this concept is really useful: if you have a long line of code, you can break it into multiple physical lines by using the backslash. This is referred to as _explicit line joining_:
-
-```python
-s = 'This is a string. \
-This continues the string.'
-print(s)
-```
-
-Output:
-
-```
-This is a string. This continues the string.
-```
-
-Similarly,
-
-```python
-i = \
-5
-```
-
-is the same as
-
-```python
-i = 5
-```
-
-Sometimes, there is an implicit assumption where you don't need to use a backslash. This is the case where the logical line has a starting parentheses, starting square brackets or a starting curly braces but not an ending one. This is called *implicit line joining*. You can see this in action when we write programs using [list](./data_structures.md#lists) in later chapters.
+When a logical line has a starting parenthesis, starting square brackets, or a starting curly braces but not an ending one, you may continue the expression on multiple lines until the matching parenthesis/bracket/brace is given. This is called *implicit line joining*. You can see this in action when we write programs using [lists](./11_data_structures.md#lists) in later chapters.
 
 ## Indentation
 
@@ -402,7 +336,7 @@ When you run this, you get the following error:
 IndentationError: unexpected indent
 ```
 
-Notice that there is a single space at the beginning of the second line. The error indicated by Python tells us that the syntax of the program is invalid i.e. the program was not properly written. What this means to you is that _you cannot arbitrarily start new blocks of statements_ (except for the default main block which you have been using all along, of course). Cases where you can use new blocks will be detailed in later chapters such as the [control flow](./control_flow.md#control_flow).
+Notice that there is a single space at the beginning of the second line. The error indicated by Python tells us that the syntax of the program is invalid i.e. the program was not properly written. What this means to you is that _you cannot arbitrarily start new blocks of statements_ (except for the default main block which you have been using all along, of course). Cases where you can use new blocks will be detailed in later chapters such as the [control flow](./08_control_flow.md#control_flow).
 
 > **How to indent**
 > 

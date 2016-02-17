@@ -1,4 +1,4 @@
-# Installation {#installation}
+# Installation
 
 When we refer to "Python 3" in this book, we will be referring to any version of Python equal to or greater than version [Python {{ book.pythonVersion }}](https://www.python.org/downloads/).
 
@@ -10,7 +10,7 @@ CAUTION: When you are given the option of unchecking any "optional" components, 
 
 NOTE: For people who already know programming, if you are familiar with Docker, check out [Python in Docker](https://hub.docker.com/_/python/) and [Docker on Windows](https://docs.docker.com/windows/).
 
-### DOS Prompt {#dos-prompt}
+### DOS Prompt
 
 If you want to be able to use Python from the Windows command line i.e. the DOS prompt, then you need to set the PATH variable appropriately.
 
