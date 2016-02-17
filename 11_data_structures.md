@@ -2,31 +2,57 @@
 
 Data structures are basically just that - they are *structures* which can hold some *data* together. In other words, they are used to store a collection of related data.
 
-There are four built-in data structures in Python - _list, tuple, dictionary and set_. We will see how to use each of them and how they make life easier for us.
+The three main collection data structures in Python are _list, tuple, and dictionary_. We will see how to use each of them and how they make life easier for us.
 
-## List
+## Lists
 
 A `list` is a data structure that holds an ordered collection of items i.e. you can store a *sequence* of items in a list. This is easy to imagine if you can think of a shopping list where you have a list of items to buy, except that you probably have each item on a separate line in your shopping list whereas in Python you put commas in between them.
 
-The list of items should be enclosed in square brackets so that Python understands that you are specifying a list. Once you have created a list, you can add, remove or search for items in the list. Since we can add and remove items, we say that a list is a *mutable* data type i.e. this type can be altered.
+Lists of items are enclosed in square brackets, e.g. `[1, 2, 3]`. Once you have created a list, you can add, remove, and search for items in the list. Since we can add and remove items, we say that a list is a *mutable* data type i.e. this type can be altered.
 
-## Quick Introduction To Objects And Classes
-
-Although I've been generally delaying the discussion of objects and classes till now, a little explanation is needed right now so that you can understand lists better. We will explore this topic in detail in a [later chapter](./13_oop.md#oop).
-
-A list is an example of usage of objects and classes. When we use a variable `i` and assign a value to it, say integer `5` to it, you can think of it as creating an *object* (i.e. instance) `i` of *class* (i.e. type) `int`. In fact, you can read `help(int)` to understand this better.
-
-A class can also have *methods* i.e. functions defined for use with respect to that class only. You can use these pieces of functionality only when you have an object of that class. For example, Python provides an `append` method for the `list` class which allows you to add an item to the end of the list. For example, `mylist.append('an item')` will add that string to the list `mylist`. Note the use of dotted notation for accessing methods of the objects.
-
-A class can also have *fields* which are nothing but variables defined for use with respect to that class only. You can use these variables/names only when you have an object of that class. Fields are also accessed by the dotted notation, for example, `mylist.field`.
+All objects in Python, including data types like `list`, contain methods that allow you to perform some operation on that object. For example, to add an item to a list we use the `list.append(...)` method. Methods are looked up on an object using the `.` and called using parentheses just like a function. To see a list of methods on a given object, use `dir(...)` on that object.
 
 Example (save as `ds_using_list.py`):
 
-<pre><code class="lang-python">{% include "./programs/ds_using_list.py" %}</code></pre>
+```python
+# This is my shopping list
+shoplist = ['apple', 'mango', 'carrot', 'banana']
+
+print('I have', len(shoplist), 'items to purchase.')
+
+print('These items are:', end=' ')
+for item in shoplist:
+    print(item, end=' ')
+
+print('\nI also have to buy rice.')
+shoplist.append('rice')
+print('My shopping list is now', shoplist)
+
+print('I will sort my list now.')
+shoplist.sort()
+print('Sorted shopping list is', shoplist)
+
+print('The first item I will buy is', shoplist[0])
+olditem = shoplist[0]
+del shoplist[0]
+print('I bought the', olditem)
+print('My shopping list is now', shoplist)
+```
 
 Output:
 
-<pre><code>{% include "./programs/ds_using_list.txt" %}</code></pre>
+```
+$ python ds_using_list.py
+I have 4 items to purchase.
+These items are: apple mango carrot banana
+I also have to buy rice.
+My shopping list is now ['apple', 'mango', 'carrot', 'banana', 'rice']
+I will sort my list now.
+Sorted shopping list is ['apple', 'banana', 'carrot', 'mango', 'rice']
+The first item I will buy is apple
+I bought the apple
+My shopping list is now ['banana', 'carrot', 'mango', 'rice']
+```
 
 **How It Works**
 
@@ -44,65 +70,110 @@ Next, when we finish buying an item in the market, we want to remove it from the
 
 If you want to know all the methods defined by the list object, see `help(list)` for details.
 
-## Tuple
+## Tuples
 
-Tuples are used to hold together multiple objects. Think of them as similar to lists, but without the extensive functionality that the list class gives you. One major feature of tuples is that they are *immutable* like strings i.e. you cannot modify tuples.
+Tuples are used to hold together multiple objects. They are similar to lists, but don't contain the extensive functionality that the lists give you. One major feature of tuples is that they are *immutable* like strings i.e. you cannot modify tuples
 
-Tuples are defined by specifying items separated by commas within an optional pair of parentheses.
+Tuples are defined by specifying items separated by commas within a pair of parentheses, e.g. `(1, 2)`.
 
-Tuples are usually used in cases where a statement or a user-defined function can safely assume that the collection of values i.e. the tuple of values used will not change.
+Tuples are typically used in cases where you have a collection of items with a fixed size, the values inside the tuple will not change, and position of the items is important. For example, you could use a tuple to represent `(x, y)` coordinates on a map. There will always be two elements in the tuple, the first element is always the `x` value, and the second element is always the `y` value.
 
 Example (save as `ds_using_tuple.py`):
 
-<pre><code class="lang-python">{% include "./programs/ds_using_tuple.py" %}</code></pre>
+```python
+coords = (1, 8)
+new_coords = (2, 7)
+line_segment = (coords, new_coords)
+print("The coordinates have {} values".format(len(coords)))
+print("The first set of coordinates is {}".format(coords))
+print("The second set of coordinates is {}".format(new_coords))
+print("The set of X values are: {} and {}".format(coords[0], new_coords[0]))
+print("The set of Y values are: {} and {}".format(coords[1], new_coords[1]))
+print("There is a line segment between the two points: {}".format(line_segment))
+print("The X value of the first point in the segment is: {}".format(line_segment[0][0]))
+```
 
 Output:
 
-<pre><code>{% include "./programs/ds_using_tuple.txt" %}</code></pre>
+```
+$ python ds_using_tuple.py
+The coordinates have 2 values
+The first set of coordinates is (1, 8)
+The second set of coordinates is (2, 7)
+The set of X values are: 1 and 2
+The set of Y values are: 8 and 7
+There is a line segment between the two points: ((1, 8), (2, 7))
+The X value of the first point in the segment is: 1
+```
 
 **How It Works**
 
-The variable `zoo` refers to a tuple of items. We see that the `len` function can be used to get the length of the tuple. This also indicates that a tuple is a [sequence](#sequence) as well.
+The variables `coords` and `new_coords` refer to tuples of `(x,y)` coordinates. We see that the `len` function can be used to get the length of the tuple. This also indicates that a tuple is a [sequence](#sequence) as well.
 
-We are now shifting these animals to a new zoo since the old zoo is being closed. Therefore, the `new_zoo` tuple contains some animals which are already there along with the animals brought over from the old zoo. Back to reality, note that a tuple within a tuple does not lose its identity.
+We use indexing with square brackets to look at the `x` and `y` values individually.
 
-We can access the items in the tuple by specifying the item's position within a pair of square brackets just like we did for lists. This is called the _indexing_ operator. We access the third item in `new_zoo` by specifying `new_zoo[2]` and we access the third item within the third item in the `new_zoo` tuple by specifying `new_zoo[2][2]`. This is pretty simple once you've understood the idiom.
+We can nest the tuples inside of another tuple, `line_segment`, which represents a line between the two points. Again, we can use indexing to grab the first item in the `line_segment` tuple `(1, 8)`, then look up the first element of that tuple to get the integer `1`.
 
-> **Tuple with 0 or 1 items**
-> 
-> An empty tuple is constructed by an empty pair of parentheses such as `myempty = ()`. However, a tuple with a single item is not so simple. You have to specify it using a comma following the first (and only) item so that Python can differentiate between a tuple and a pair of parentheses surrounding the object in an expression i.e. you have to specify `singleton = (2 , )` if you mean you want a tuple containing the item `2`.
+> **Tuples with 0 or 1 items**
+>
+> An empty tuple is constructed by an empty pair of parentheses such as `myempty = ()`. However, a tuple with a single item is not so simple. You have to specify it using a comma following the first (and only) item so that Python can differentiate between a tuple and a pair of parentheses surrounding the object in an expression i.e. you have to specify `singleton = (2,)` if you mean you want a tuple containing the single item `2`.
 
-<!-- -->
+## Dictionaries
 
-> **Note for Perl programmers**
-> 
-> A list within a list does not lose its identity i.e. lists are not flattened as in Perl. The same applies to a tuple within a tuple, or a tuple within a list, or a list within a tuple, etc. As far as Python is concerned, they are just objects stored using another object, that's all.
+A dictionary is like an address-book where you can find the address of a person by knowing only the person's name. It allows us to associate *keys* with *values*. Note that the keys in a dictionary must all be unique, e.g. if two people have the exact same name, you have no way of differentiating which phone number belongs to which name.
 
-## Dictionary
+Note that you can use only immutable objects (like strings and tuples) for the keys of a dictionary, but you can use any object for the values of the dictionary. This means that keys are typically simpler objects, while values can be more complex.
 
-A dictionary is like an address-book where you can find the address or contact details of a person by knowing only his/her name i.e. we associate *keys* (name) with *values* (details). Note that the key must be unique just like you cannot find out the correct information if you have two persons with the exact same name.
+Pairs of keys and values are specified in a dictionary by using the notation `d = {key1: value1, key2: value2}`. Notice that the key-value pairs are separated by a colon and the pairs are separated themselves by commas, and all this is enclosed in a pair of curly braces.
 
-Note that you can use only immutable objects (like strings) for the keys of a dictionary but you can use either immutable or mutable objects for the values of the dictionary.  This basically translates to say that you should use only simple objects for keys.
+Key-value pairs in a dictionary are not ordered in any manner. If you want a particular order, then you will have to sort them yourself before using it.
 
-Pairs of keys and values are specified in a dictionary by using the notation `d = {key1 : value1, key2 : value2 }`. Notice that the key-value pairs are separated by a colon and the pairs are separated themselves by commas and all this is enclosed in a pair of curly braces.
-
-Remember that key-value pairs in a dictionary are not ordered in any manner. If you want a particular order, then you will have to sort them yourself before using it.
-
-The dictionaries that you will be using are instances/objects of the `dict` class.
+Dictionaries in Python are represented by the `dict` class.
 
 Example (save as `ds_using_dict.py`):
 
-<pre><code class="lang-python">{% include "./programs/ds_using_dict.py" %}</code></pre>
+```python
+book = {
+    'Swaroop': 'swaroop@swaroopch.com',
+    'Larry': 'larry@wall.org',
+    'Matsumoto': 'matz@ruby-lang.org',
+    'Spammer': 'spammer@hotmail.com'
+}
+
+print("Swaroop's address is", book['Swaroop'])
+
+# Deleting a key-value pair
+del book['Spammer']
+
+print('There are {} contacts in the address book.'.format(len(book)))
+
+for name, address in book.items():
+    print('Contact {} at {}'.format(name, address))
+
+# Adding a key-value pair
+book['Guido'] = 'guido@python.org'
+
+if 'Guido' in book:
+    print("Guido's address is", book['Guido'])
+```
 
 Output:
 
-<pre><code>{% include "./programs/ds_using_dict.txt" %}</code></pre>
+```
+$ python ds_using_dict.py
+Swaroop's address is swaroop@swaroopch.com
+There are 3 contacts in the address book.
+Contact Swaroop at swaroop@swaroopch.com
+Contact Matsumoto at matz@ruby-lang.org
+Contact Larry at larry@wall.org
+Guido's address is guido@python.org
+```
 
 **How It Works**
 
-We create the dictionary `ab` using the notation already discussed. We then access key-value pairs by specifying the key using the indexing operator as discussed in the context of lists and tuples. Observe the simple syntax.
+We create the dictionary `book` using the notation already discussed. We then access key-value pairs by specifying the key using the indexing operator as discussed in the context of lists and tuples. Observe the simple syntax.
 
-We can delete key-value pairs using our old friend - the `del` statement. We simply specify the dictionary and the indexing operator for the key to be removed and pass it to the `del` statement. There is no need to know the value corresponding to the key for this operation.
+We can delete key-value pairs using the `del` statement. We simply specify the dictionary and the indexing operator for the key to be removed and pass it to the `del` statement. There is no need to know the value corresponding to the key for this operation.
 
 Next, we access each key-value pair of the dictionary using the `items` method of the dictionary which returns a list of tuples where each tuple contains a pair of items - the key followed by the value. We retrieve this pair and assign it to the variables `name` and `address` correspondingly for each pair using the `for..in` loop and then print these values in the for-block.
 
@@ -112,25 +183,62 @@ We can check if a key-value pair exists using the `in` operator.
 
 For the list of methods of the `dict` class, see `help(dict)`.
 
-> **Keyword Arguments and Dictionaries**
-> 
-> If you have used keyword arguments in your functions, you have already used dictionaries! Just think about it - the key-value pair is specified by you in the parameter list of the function definition and when you access variables within your function, it is just a key access of a dictionary (which is called the _symbol table_ in compiler design terminology).
+## Sequences
 
-## Sequence
+Lists, tuples, dicts, and strings are examples of "sequences" or "containers", but what are sequences and what is so special about them?
 
-Lists, tuples and strings are examples of sequences, but what are sequences and what is so special about them?
+The major features are *membership tests*, (i.e. the `in` and `not in` expressions) and *indexing operations*, which allow us to fetch a particular item in the sequence directly. We can also `iterate` over them using the `for` loop.
 
-The major features are *membership tests*, (i.e. the `in` and `not in` expressions) and *indexing operations*, which allow us to fetch a particular item in the sequence directly.
-
-The three types of sequences mentioned above - lists, tuples and strings, also have a *slicing* operation which allows us to retrieve a slice of the sequence i.e. a part of the sequence.
+Three of the sequence types mentioned above, lists, tuples, and strings, also have a *slicing* operation which allows us to retrieve a range of indices at once from the sequence. Dictionaries do not have the same slicing operation because they are unordered.
 
 Example (save as `ds_seq.py`):
 
-<pre><code class="lang-python">{% include "./programs/ds_seq.py" %}</code></pre>
+```python
+vegetable = 'carrot'
+shoplist = ['apple', 'mango', 'banana', vegetable]
+
+# Indexing or 'subscript' operations
+print('Item 0 is', shoplist[0])
+print('Item 1 is', shoplist[1])
+print('Item 2 is', shoplist[2])
+print('Item 3 is', shoplist[3])
+print('Item -1 is', shoplist[-1])
+print('Item -2 is', shoplist[-2])
+print('Character 0 of the vegetable is', vegetable[0])
+
+# Slicing a list
+print('Item 1 to 3 is', shoplist[1:3])
+print('Item 2 to end is', shoplist[2:])
+print('Item 1 to -1 is', shoplist[1:-1])
+print('Item start to end is', shoplist[:])
+
+# Slicing a string
+print('characters 1 to 3 is', vegetable[1:3])
+print('characters 2 to end is', vegetable[2:])
+print('characters 1 to -1 is', vegetable[1:-1])
+print('characters start to end is', vegetable[:])
+```
+
 
 Output:
 
-<pre><code>{% include "./programs/ds_seq.txt" %}</code></pre>
+```
+Item 0 is apple
+Item 1 is mango
+Item 2 is banana
+Item 3 is carrot
+Item -1 is carrot
+Item -2 is banana
+Character 0 of the vegetable is c
+Item 1 to 3 is ['mango', 'banana']
+Item 2 to end is ['banana', 'carrot']
+Item 1 to -1 is ['mango', 'banana']
+Item start to end is ['apple', 'mango', 'banana', 'carrot']
+characters 1 to 3 is ar
+characters 2 to end is rrot
+characters 1 to -1 is arro
+characters start to end is carrot
+```
 
 **How It Works**
 
@@ -162,32 +270,7 @@ You can also provide a third argument for the slice, which is the _step_ for the
 
 Notice that when the step is 2, we get the items with position 0, 2,... When the step size is 3, we get the items with position 0, 3, etc.
 
-Try various combinations of such slice specifications using the Python interpreter interactively i.e. the prompt so that you can see the results immediately. The great thing about sequences is that you can access tuples, lists and strings all in the same way!
-
-## Set
-
-Sets are _unordered_ collections of simple objects. These are used when the existence of an object in a collection is more important than the order or how many times it occurs.
-
-Using sets, you can test for membership, whether it is a subset of another set, find the intersection between two sets, and so on.
-
-```python
->>> bri = set(['brazil', 'russia', 'india'])
->>> 'india' in bri
-True
->>> 'usa' in bri
-False
->>> bric = bri.copy()
->>> bric.add('china')
->>> bric.issuperset(bri)
-True
->>> bri.remove('russia')
->>> bri & bric # OR bri.intersection(bric)
-{'brazil', 'india'}
-```
-
-**How It Works**
-
-The example is pretty much self-explanatory because it involves basic set theory mathematics taught in school.
+Try various combinations of indexing and slicing using the Python interpreter interactively so that you can see the results immediately. The great thing about sequences is that you can access tuples, lists, and strings all in the same way!
 
 ## References
 
@@ -197,44 +280,86 @@ Generally, you don't need to be worried about this, but there is a subtle effect
 
 Example (save as `ds_reference.py`):
 
-<pre><code class="lang-python">{% include "./programs/ds_reference.py" %}</code></pre>
+```python
+# mylist is just another name pointing to the same object!
+shoplist = ['apple', 'mango', 'carrot', 'banana']
+mylist = shoplist
+
+# I purchased the first item, so I remove it from the list
+del shoplist[0]
+
+# Notice that both shoplist and mylist both print
+# the same list without the 'apple' confirming that
+# they point to the same object
+print('shoplist is', shoplist)
+print('mylist is', mylist)
+
+# Copy the list using shoplist[:], a slice that covers the entire list
+mylist = shoplist[:]
+
+# Now what happens if we remove the first item?
+del mylist[0]
+print('shoplist is', shoplist)
+print('mylist is', mylist)
+# Notice that now the two lists are different
+```
 
 Output:
 
-<pre><code>{% include "./programs/ds_reference.txt" %}</code></pre>
+```
+shoplist is ['mango', 'carrot', 'banana']
+mylist is ['mango', 'carrot', 'banana']
+shoplist is ['mango', 'carrot', 'banana']
+mylist is ['carrot', 'banana']
+```
 
 **How It Works**
 
 Most of the explanation is available in the comments.
 
-Remember that if you want to make a copy of a list or such kinds of sequences or complex objects (not simple _objects_ such as integers), then you have to use the slicing operation to make a copy. If you just assign the variable name to another name, both of them will ''refer'' to the same object and this could be trouble if you are not careful.
-
-> **Note for Perl programmers**
-> 
-> Remember that an assignment statement for lists does **not** create a copy. You have to use slicing operation to make a copy of the sequence.
+Remember that if you want to make a copy of a list or such kinds of sequences or complex objects (not simple _objects_ such as integers), then you have to use the slicing operation to make a copy. If you just assign the variable name to another name, both of them will "refer" to the same object and this could be trouble if you are not careful.
 
 ## More About Strings
 
-We have already discussed strings in detail earlier. What more can there be to know?  Well, did you know that strings are also objects and have methods which do everything from checking part of a string to stripping spaces!
+We have already discussed strings in detail earlier. What more can there be to know?  Well, did you know that strings are also objects and have methods for doing all kinds of useful operations?
 
-The strings that you use in program are all objects of the class `str`.  Some useful methods of this class are demonstrated in the next example. For a complete list of such methods, see `help(str)`.
+The strings that you use in program are all objects of the class `str`. Some useful methods of this class are demonstrated in the next example. For a complete list of such methods, see `dir(str)` or `help(str)`.
 
 Example (save as `ds_str_methods.py`):
 
-<pre><code class="lang-python">{% include "./programs/ds_str_methods.py" %}</code></pre>
+```python
+name = 'Swaroop'
+
+if name.startswith('Swa'):
+    print('Yes, the string starts with "Swa"')
+
+if 'a' in name:
+    print('Yes, it contains the string "a"')
+
+if name.find('war') != -1:
+    print('Yes, it contains the string "war"')
+
+delimiter = ' | '
+mylist = ['Brazil', 'Russia', 'India', 'China']
+print(delimiter.join(mylist))
+```
 
 Output:
 
-<pre><code>{% include "./programs/ds_str_methods.txt" %}</code></pre>
+```
+$ python ds_str_methods.py
+Yes, the string starts with "Swa"
+Yes, it contains the string "a"
+Yes, it contains the string "war"
+Brazil | Russia | India | China
+```
 
 **How It Works**
 
-Here, we see a lot of the string methods in action. The `startswith` method is used to find out whether the string starts with the given string. The `in` operator is used to check if a given string is a part of the string.
+Here, we see a few of the string methods in action. The `startswith` method is used to find out whether the string starts with the given string. The `in` operator is used to check if a given string is a part of the string.
 
-The `find` method is used to locate the position of the given substring within the string; `find` returns -1 if it is unsuccessful in finding the substring. The `str` class also has a neat method to `join` the items of a sequence with the string acting as a delimiter between each item of the sequence and returns a bigger string generated from this.
+The `find` method is used to locate the position of the given substring within the string. `find` returns -1 if it is unsuccessful in finding the substring. The `str` class also has a neat method to `join` the items of a sequence with the string acting as a delimiter between each item of the sequence and returns a bigger string generated from this.
 
 ## Summary
 
-We have explored the various built-in data structures of Python in detail. These data structures will be essential for writing programs of reasonable size.
-
-Now that we have a lot of the basics of Python in place, we will next see how to design and write a real-world Python program.
+We have explored the various built-in data structures of Python in detail. They are essential for doing useful things with real world data.

@@ -50,7 +50,7 @@ We supply a string to the built-in `input` function which prints it to the scree
 
 Next, we compare the guess of the user with the number we have chosen. If they are equal, we print a success message. Notice that we use indentation levels to tell Python which statements belong to which block. This is why indentation is so important in Python. I hope you are sticking to the "consistent indentation" rule. Are you?
 
-Notice how the `if` statement contains a colon at the end - we are indicating to Python that a block of statements follows.
+Notice how the `if` statement contains a colon `:` at the end, this is used to indicate to Python that an indented block of statements follows.
 
 Then, we check if the guess is less than the number, and if so, we inform the user that they must guess a little higher than that. What we have used here is the `elif` clause which actually combines two related `if else-if else` statements into one combined `if-elif-else` statement. This makes the program easier and reduces the amount of indentation required.
 
@@ -67,10 +67,8 @@ if True:
 
 After Python has finished executing the complete `if` statement along with the associated `elif` and `else` clauses, it moves on to the next statement in the block containing the `if` statement. In this case, it is the main block (where execution of the program starts), and the next statement is the `print('Done')` statement. After this, Python sees the ends of the program and simply finishes up.
 
-Even though this is a very simple program, I have been pointing out a lot of things that you should notice. All these are pretty straightforward (and surprisingly simple for those of you from C/C++ backgrounds). You will need to become aware of all these things initially, but after some practice you will become comfortable with them, and it will all feel 'natural' to you.
-
 > **Note for C/C++ Programmers**
-> 
+>
 > There is no `switch` statement in Python. You can use an `if..elif..else` statement to do the same thing (and in some cases, use a [dictionary](./11_data_structures.md#dictionary) to do it quickly)
 
 ## The while Statement
@@ -79,110 +77,88 @@ The `while` statement allows you to repeatedly execute a block of statements as 
 
 Example (save as `while.py`):
 
-<pre><code class="lang-python">{% include "./programs/while.py" %}</code></pre>
+```python
+number = 23
+running = True
+
+while running:
+    guess = int(input('Enter an integer: '))
+
+    if guess == number:
+        print('Congratulations, you guessed it.')
+        running = False # this causes the while loop to stop
+    elif guess < number:
+        print('No, it is a little higher than that.')
+    else:
+        print('No, it is a little lower than that.')
+
+print('Done')
+```
 
 Output:
 
-<pre><code>{% include "./programs/while.txt" %}</code></pre>
+```
+$ python while.py
+Enter an integer: 50
+No, it is a little lower than that.
+Enter an integer: 22
+No, it is a little higher than that.
+Enter an integer: 23
+Congratulations, you guessed it.
+Done
+```
 
 **How It Works**
 
 In this program, we are still playing the guessing game, but the advantage is that the user is allowed to keep guessing until he guesses correctly - there is no need to repeatedly run the program for each guess, as we have done in the previous section. This aptly demonstrates the use of the `while` statement.
 
-We move the `input` and `if` statements to inside the `while` loop and set the variable `running` to `True` before the while loop. First, we check if the variable `running` is `True` and then proceed to execute the corresponding *while-block*. After this block is executed, the condition is again checked which in this case is the `running` variable. If it is true, we execute the while-block again, else we continue to execute the optional else-block and then continue to the next statement.
-
-The `else` block is executed when the `while` loop condition becomes `False` - this may even be the first time that the condition is checked. If there is an `else` clause for a `while` loop, it is always executed unless you break out of the loop with a `break` statement.
-
-The `True` and `False` are called Boolean types and you can consider them to be equivalent to the value `1` and `0` respectively.
-
-> **Note for C/C++ Programmers**
-> 
-> Remember that you can have an `else` clause for the `while` loop.
+We move the `input` and `if` statements to inside the `while` loop and set the variable `running` to `True` before the while loop. First, we check if the variable `running` is `True` and then proceed to execute the corresponding *while-block*. After this block is executed, the condition is again checked which in this case is the `running` variable. If it is true, we execute the while-block again.
 
 ## The `for` loop
 
-The `for..in` statement is another looping statement which *iterates* over a sequence of objects i.e. go through each item in a sequence. We will see more about [sequences](./11_data_structures.md#sequence) in detail in later chapters. What you need to know right now is that a sequence is just an ordered collection of items.
+The `for..in` statement is another looping statement which *iterates* over a sequence of objects i.e. go through each item in a sequence. We will see more about [sequences](./11_data_structures.md#sequence) in detail in later chapters. What you need to know right now is that a sequence is just an ordered collection of items, like integers or strings.
 
 Example (save as `for.py`):
 
-<pre><code class="lang-python">{% include "./programs/for.py" %}</code></pre>
+```python
+for i in range(5):
+    print(i)
+print('The for loop is over')
+```
 
 Output:
 
-<pre><code>{% include "./programs/for.txt" %}</code></pre>
+```
+$ python for.py
+0
+1
+2
+3
+4
+The for loop is over
+```
 
 **How It Works**
 
 In this program, we are printing a *sequence* of numbers. We generate this sequence of numbers using the built-in `range` function.
 
-What we do here is supply it two numbers and `range` returns a sequence of numbers starting from the first number and up to the second number. For example, `range(1,5)` gives the sequence `[1, 2, 3, 4]`. By default, `range` takes a step count of 1. If we supply a third number to `range`, then that becomes the step count. For example, `range(1,5,2)` gives `[1,3]`. Remember that the range extends *up to* the second number i.e. it does *not* include the second number.
+What we do here is supply `range` with a number that will be counted up to, starting at 0. For example, `range(5)`, will start at 0 and count by 1 up to (but **not including** 5), giving `[0, 1, 2, 3, 4]`.
 
-Note that `range()` generates a sequence of numbers all at once, so this is safe to use only for small ranges. If you want a long range but generated only one number at a time, then use `xrange()`. Lists are explained in the [data structures chapter](./11_data_structures.md#data-structures).
+Note that `range()` generates a list of numbers all at once for us to use. Lists are explained in the [data structures chapter](./11_data_structures.md#data-structures).
 
-The `for` loop then iterates over this range - `for i in range(1,5)` is equivalent to `for i in [1, 2, 3, 4]` which is like assigning each number (or object) in the sequence to i, one at a time, and then executing the block of statements for each value of `i`.  In this case, we just print the value in the block of statements.
+The `for` loop then iterates over this range - `for i in range(5)` is equivalent to `for i in [0, 1, 2, 3, 4]`. The `i` variable is assigned to each value in the sequence, one at a time, and then the block of statements in the body of the loop is executed.  In this case, we just print the value in the block of statements.
 
-Remember that the `else` part is optional. When included, it is always executed once after the `for` loop is over unless a <<the_break_statement,break>> statement is encountered.
-
-Remember that the `for..in` loop works for any sequence. Here, we have a list of numbers generated by the built-in `range` function, but in general we can use any kind of sequence of any kind of objects! We will explore this idea in detail in later chapters.
+Remember that the `for..in` loop works for any sequence. Here, we have a list of numbers generated by the built-in `range` function, but in general we can use any kind of sequence of any kind of object! We will explore this idea in detail in later chapters.
 
 > **Note for C/C++/Java/C# Programmers**
 > 
 > The Python `for` loop is radically different from the C/C++ `for` loop. C# programmers will note that the `for` loop in Python is similar to the `foreach` loop in C#. Java programmers will note that the same is similar to `for (int i : IntArray)` in Java 1.5.
 > 
-> In C/C++, if you want to write `for (int i = 0; i < 5; i++)`, then in Python you write just `for i in range(0,5)`. As you can see, the `for` loop is simpler, more expressive and less error prone in Python.
+> In C/C++, if you want to write `for (int i = 0; i < 5; i++)`, then in Python you write just `for i in range(5)`. As you can see, the `for` loop is simpler, more expressive and less error prone in Python.
 
-## The break Statement
+## The `break` and `continue` Statements
 
-The `break` statement is used to *break* out of a loop statement i.e. stop the execution of a looping statement, even if the loop condition has not become `False` or the sequence of items has not been completely iterated over.
-
-An important note is that if you *break* out of a `for` or `while` loop, any corresponding loop `else` block is **not** executed.
-
-Example (save as `break.py`):
-
-<pre><code class="lang-python">{% include "./programs/break.py" %}</code></pre>
-
-Output:
-
-<pre><code>{% include "./programs/break.txt" %}</code></pre>
-
-**How It Works**
-
-In this program, we repeatedly take the user's input and print the length of each input each
-time. We are providing a special condition to stop the program by checking if the user input is
-`'quit'`. We stop the program by *breaking* out of the loop and reach the end of the program.
-
-The length of the input string can be found out using the built-in `len` function.
-
-Remember that the `break` statement can be used with the `for` loop as well.
-
-**Swaroop's Poetic Python**
-
-The input I have used here is a mini poem I have written:
-
-```
-Programming is fun
-When the work is done
-if you wanna make your work also fun:
-    use Python!
-```
-
-## The `continue` Statement
-
-The `continue` statement is used to tell Python to skip the rest of the statements in the current loop block and to *continue* to the next iteration of the loop.
-
-Example (save as `continue.py`):
-
-<pre><code class="lang-python">{% include "./programs/continue.py" %}</code></pre>
-
-Output:
-
-<pre><code>{% include "./programs/continue.txt" %}</code></pre>
-
-**How It Works**
-
-In this program, we accept input from the user, but we process the input string only if it is at least 3 characters long. So, we use the built-in `len` function to get the length and if the length is less than 3, we skip the rest of the statements in the block by using the `continue` statement. Otherwise, the rest of the statements in the loop are executed, doing any kind of processing we want to do here.
-
-Note that the `continue` statement works with the `for` loop as well.
+While inside a loop body, you can use `break` to immediately exit the loop, and `continue` to skip over the current iteration to the next iteration. [Official docs](https://docs.python.org/2/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops). [A Byte of Python's section on break](http://python.swaroopch.com/control_flow.html#break-statement) and [continue](http://python.swaroopch.com/control_flow.html#continue-statement).
 
 ## Summary
 
