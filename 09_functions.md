@@ -186,7 +186,7 @@ The `pass` statement is used in Python to indicate an empty block of statements.
 
 > TIP: There is a built-in function called `max` that already implements the 'find maximum' functionality, so use this built-in function whenever possible.
 
-## DocStrings
+## Docstrings
 
 Python has a nifty feature called *documentation strings*, usually referred to by its shorter name *docstrings*. DocStrings are an important tool that you should make use of since it helps to document the program better and makes it easier to understand. Amazingly, we can even get the docstring back from, say a function, when the program is actually running!
 
