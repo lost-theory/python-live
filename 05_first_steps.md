@@ -84,8 +84,6 @@ $ python hello.py
 hello world
 ```
 
-![Screenshot of running program in terminal](./img/terminal_screenshot.png)
-
 If you got the output as shown above, congratulations! - you have successfully run your first Python program. You have successfully crossed the hardest part of learning programming, which is, getting started with your first program!
 
 In case you got an error, please type the above program _exactly_ as shown above and run the program again. Note that Python is case-sensitive i.e. `print` is not the same as `Print` - note the lowercase `p` in the former and the uppercase `P` in the latter. Also, ensure there are no spaces or tabs before the first character in each line - we will see [why this is important](./06_basics.md#indentation) later.
