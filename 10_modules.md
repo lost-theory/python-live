@@ -1,20 +1,35 @@
 # Modules
 
-You have seen how you can reuse code in your program by defining functions once. What if you wanted to reuse a number of functions in other programs that you write? As you might have guessed, the answer is modules.
+You have seen how you can reuse code in your program by defining functions once. What if you wanted to reuse a number of functions in other programs that you write? The answer is modules.
 
-There are various methods of writing modules, but the simplest way is to create a file with a `.py` extension that contains functions and variables.
-
-Another method is to write the modules in the native language in which the Python interpreter itself was written. For example, you can write modules in the [C programming language](http://docs.python.org/3/extending/) and when compiled, they can be used from your Python code when using the standard Python interpreter.
+The simplest way to write a module is to create a file with a `.py` extension that contains functions and variables. If you've followed along with running the example code, you've already created many modules without knowing it!
 
 A module can be *imported* by another program to make use of its functionality. This is how we can use the Python standard library as well. First, we will see how to use the standard library modules.
 
 Example (save as `module_using_sys.py`):
 
-<pre><code class="lang-python">{% include "./programs/module_using_sys.py" %}</code></pre>
+```python
+import sys
+
+print('The command line arguments are:')
+print(sys.argv)
+```
 
 Output:
 
-<pre><code>{% include "./programs/module_using_sys.txt" %}</code></pre>
+```
+$ python module_using_sys.py
+The command line arguments are:
+['module_using_sys.py']
+
+$ python module_using_sys.py --test=1 wow
+The command line arguments are:
+['module_using_sys.py', '--test=1', 'wow']
+
+$ python module_using_sys.py 1 2 3 4 5 6 7 8 9 10
+The command line arguments are:
+['module_using_sys.py', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+```
 
 **How It Works**
 
@@ -24,31 +39,17 @@ When Python executes the `import sys` statement, it looks for the `sys` module. 
 
 If it was not a compiled module i.e. a module written in Python, then the Python interpreter will search for it in the directories listed in its `sys.path` variable. If the module is found, then the statements in the body of that module are run and the module is made *available* for you to use. Note that the initialization is done only the *first* time that we import a module.
 
-The `argv` variable in the `sys` module is accessed using the dotted notation i.e. `sys.argv`. It clearly indicates that this name is part of the `sys` module. Another advantage of this approach is that the name does not clash with any `argv` variable used in your program.
+The `argv` variable inside the `sys` module is accessed using the dotted notation i.e. `sys.argv`. It clearly indicates that this name is part of the `sys` module. Another advantage of this approach is that the name does not clash with any `argv` variable used in your program.
 
-The `sys.argv` variable is a *list* of strings (lists are explained in detail in a [later chapter](./11_data_structures.md#data-structures). Specifically, the `sys.argv` contains the list of *command line arguments* i.e. the arguments passed to your program using the command line.
+The `sys.argv` variable is a *list* of strings. Specifically, the `sys.argv` contains the list of *command line arguments* i.e. the arguments passed to your program using the command line.
 
-If you are using an IDE to write and run these programs, look for a way to specify command line arguments to the program in the menus.
+Here, when we execute `python module_using_sys.py 1 2 3 4`, we run the module `module_using_sys.py` with the `python` command and the other things that follow are arguments passed to the program. Python stores the command line arguments in the `sys.argv` variable for us to use.
 
-Here, when we execute `python module_using_sys.py we are arguments`, we run the module `module_using_sys.py` with the `python` command and the other things that follow are arguments passed to the program. Python stores the command line arguments in the `sys.argv` variable for us to use.
-
-Remember, the name of the script running is always the first argument in the `sys.argv` list. So, in this case we will have `'module_using_sys.py'` as `sys.argv[0]`, `'we'` as `sys.argv[1]`, `'are'` as `sys.argv[2]` and `'arguments'` as `sys.argv[3]`. Notice that Python starts counting from 0 and not 1.
-
-The `sys.path` contains the list of directory names where modules are imported from. Observe that the first string in `sys.path` is empty - this empty string indicates that the current directory is also part of the `sys.path` which is same as the `PYTHONPATH` environment variable. This means that you can directly import modules located in the current directory. Otherwise, you will have to place your module in one of the directories listed in `sys.path`.
-
-Note that the current directory is the directory from which the program is launched. Run `import os; print(os.getcwd())` to find out the current directory of your program.
-
-## Byte-compiled .pyc files
-
-Importing a module is a relatively costly affair, so Python does some tricks to make it faster. One way is to create *byte-compiled* files with the extension `.pyc` which is an intermediate form that Python transforms the program into (remember the [introduction section](./03_about_python.md#interpreted) on how Python works?). This `.pyc` file is useful when you import the module the next time from a different program - it will be much faster since a portion of the processing required in importing a module is already done. Also, these byte-compiled files are platform-independent.
-
-NOTE: These `.pyc` files are usually created in the same directory as the corresponding `.py` files. If Python does not have permission to write to files in that directory, then the `.pyc` files will _not_ be created.
+The name of the script running is always the first argument in the `sys.argv` list. So, in this case we will have `'module_using_sys.py'` as `sys.argv[0]`.
 
 ## The from..import statement
 
 If you want to directly import the `argv` variable into your program (to avoid typing the `sys.` everytime for it), then you can use the `from sys import argv` statement.
-
-> WARNING: In general, *avoid* using the `from..import` statement, use the `import` statement instead. This is because your program will avoid name clashes and will be more readable.
 
 Example:
 
@@ -57,69 +58,47 @@ from math import sqrt
 print("Square root of 16 is {}".format(sqrt(16)))
 ```
 
-## A module's `__name__`
-
-Every module has a name and statements in a module can find out the name of their module. This is handy for the particular purpose of figuring out whether the module is being run standalone or being imported. As mentioned previously, when a module is imported for the first time, the code it contains gets executed. We can use this to make the module behave in different ways depending on whether it is being used by itself or being imported from another module. This can be achieved using the `__name__` attribute of the module.
-
-Example (save as `module_using_name.py`):
-
-<pre><code class="lang-python">{% include "./programs/module_using_name.py" %}</code></pre>
-
-Output:
-
-<pre><code>{% include "./programs/module_using_name.txt" %}</code></pre>
-
-**How It Works**
-
-Every Python module has its `__name__` defined. If this is `'__main__'`, that implies that the module is being run standalone by the user and we can take appropriate actions.
-
 ## Making Your Own Modules
 
 Creating your own modules is easy, you've been doing it all along!  This is because every Python program is also a module. You just have to make sure it has a `.py` extension. The following example should make it clear.
 
 Example (save as `mymodule.py`):
 
-<pre><code class="lang-python">{% include "./programs/mymodule.py" %}</code></pre>
+```python
+def say_hi():
+    print('Hi, this is mymodule speaking.')
+```
 
 The above was a sample *module*. As you can see, there is nothing particularly special about it compared to our usual Python program. We will next see how to use this module in our other Python programs.
 
-Remember that the module should be placed either in the same directory as the program from which we import it, or in one of the directories listed in `sys.path`.
+Now we write another module which imports the first (save as `demo.py`):
 
-Another module (save as `mymodule_demo.py`):
-
-<pre><code class="lang-python">{% include "./programs/mymodule_demo.py" %}</code></pre>
+```python
+import mymodule
+print(dir(mymodule))
+mymodule.say_hi()
+```
 
 Output:
 
-<pre><code>{% include "./programs/mymodule_demo.txt" %}</code></pre>
+```
+$ python demo.py
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'say_hi']
+Hi, this is mymodule speaking.
+```
 
 **How It Works**
 
 Notice that we use the same dotted notation to access members of the module. Python makes good reuse of the same notation to give the distinctive 'Pythonic' feel to it so that we don't have to keep learning new ways to do things.
 
-Here is a version utilising the `from..import` syntax (save as `mymodule_demo2.py`):
-
-<pre><code class="lang-python">{% include "./programs/mymodule_demo2.py" %}</code></pre>
-
-The output of `mymodule_demo2.py` is same as the output of `mymodule_demo.py`.
-
-Notice that if there was already a `__version__` name declared in the module that imports mymodule, there would be a clash. This is also likely because it is common practice for each module to declare it's version number using this name. Hence, it is always recommended to prefer the `import` statement even though it might make your program a little longer.
-
-You could also use:
+Here is a version utilising the `from..import` syntax:
 
 ```python
-from mymodule import *
+from mymodule import say_hi
+say_hi()
 ```
 
-This will import all public names such as `say_hi` but would not import `__version__` because it starts with double underscores.
-
-> WARNING: Remember that you should avoid using import-star, i.e. `from mymodule import *`.
-
-<!-- -->
-
-> **Zen of Python**
-> 
-> One of Python's guiding principles is that "Explicit is better than Implicit". Run `import this` in Python to learn more.
+The output should be the same as the first `demo.py`.
 
 ## The `dir` function
 
@@ -132,28 +111,21 @@ Example:
 ```python
 $ python
 >>> import sys
-
-# get names of attributes in sys module
+>>> #get names of attributes in sys module, only a few entries are shown here...
 >>> dir(sys)
-['__displayhook__', '__doc__',
-'argv', 'builtin_module_names',
-'version', 'version_info']
-# only few entries shown here
+['__displayhook__', '__doc__', 'argv', 'builtin_module_names', 'version', 'version_info', ...]
 
-# get names of attributes for current module
+>>> #get names of attributes for current module
 >>> dir()
-['__builtins__', '__doc__',
-'__name__', '__package__']
+['__builtins__', '__doc__', '__name__', '__package__']
 
-# create a new variable 'a'
+>>> # create a new variable 'a'
 >>> a = 5
-
 >>> dir()
 ['__builtins__', '__doc__', '__name__', '__package__', 'a']
 
-# delete/remove a name
+# delete 'a'
 >>> del a
-
 >>> dir()
 ['__builtins__', '__doc__', '__name__', '__package__']
 ```
@@ -170,40 +142,6 @@ A note on `del` - this statement is used to *delete* a variable/name and after t
 
 Note that the `dir()` function works on *any* object. For example, run `dir(str)` for the attributes of the `str` (string) class.
 
-There is also a [`vars()`](http://docs.python.org/3/library/functions.html#vars) function which can potentially give you the attributes and their values, but it will not work for all cases.
-
-## Packages
-
-By now, you must have started observing the hierarchy of organizing your programs. Variables usually go inside functions. Functions and global variables usually go inside modules. What if you wanted to organize modules? That's where packages come into the picture.
-
-Packages are just folders of modules with a special `__init__.py` file that indicates to Python that this folder is special because it contains Python modules.
-
-Let's say you want to create a package called 'world' with subpackages 'asia', 'africa', etc. and these subpackages in turn contain modules like 'india', 'madagascar', etc.
-
-This is how you would structure the folders:
-
-```
-- <some folder present in the sys.path>/
-    - world/
-        - __init__.py
-        - asia/
-            - __init__.py
-            - india/
-                - __init__.py
-                - foo.py
-        - africa/
-            - __init__.py
-            - madagascar/
-                - __init__.py
-                - bar.py
-```
-
-Packages are just a convenience to hierarchically organize modules. You will see many instances of this in the [standard library](./stdlib.md#stdlib).
-
 ## Summary
 
-Just like functions are reusable parts of programs, modules are reusable programs. Packages are another hierarchy to organize modules. The standard library that comes with Python is an example of such a set of packages and modules.
-
-We have seen how to use these modules and create our own modules.
-
-Next, we will learn about some interesting concepts called data structures.
+Just like functions let you create reusable parts of programs, modules let you create reusable programs. We have seen how to use these modules and create our own modules and examine their contents using `dir`.
