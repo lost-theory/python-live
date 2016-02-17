@@ -18,7 +18,7 @@ Note that you can evaluate the expressions given in the examples using the inter
 >>>
 ```
 
-Here is a quick overview of the available operators:
+Here is a quick overview of the available operators. First, the arithmetic operators:
 
 - `+` (plus)
     - Adds two objects
@@ -38,9 +38,10 @@ Here is a quick overview of the available operators:
 
 - `/` (divide)
     - Divide x by y
-    - `13 / 3` gives `4.333333333333333`
+    - In Python 2, `/` returns integer division: `13 / 3` gives `4`
+    - In Python 3, `/` returns float division: `13 / 3` gives `4.333333333333333`
 
-- `//` (divide and floor)
+- `//` (divide and floor, integer division)
     - Divide x by y and round the answer _down_ to the nearest whole number
     - `13 // 3` gives `4`
     - `-13 // 3` gives `-5`
@@ -49,58 +50,36 @@ Here is a quick overview of the available operators:
     - Returns the remainder of the division
     - `13 % 3` gives `1`. `-25.5 % 2.25` gives `1.5`.
 
-- `<<` (left shift)
-    - Shifts the bits of the number to the left by the number of bits specified. (Each number is represented in memory by bits or binary digits i.e. 0 and 1)
-    - `2 << 2` gives `8`. `2` is represented by `10` in bits.
-    - Left shifting by 2 bits gives `1000` which represents the decimal `8`.
-
-- `>>` (right shift)
-    - Shifts the bits of the number to the right by the number of bits specified.
-    - `11 >> 1` gives `5`.
-    - `11` is represented in bits by `1011` which when right shifted by 1 bit gives `101`which is the decimal `5`.
-
-- `&` (bit-wise AND)
-    - Bit-wise AND of the numbers
-    - `5 & 3` gives `1`.
-
-- `|` (bit-wise OR)
-    - Bitwise OR of the numbers
-    - `5 | 3` gives `7`
-
-- `^` (bit-wise XOR)
-    - Bitwise XOR of the numbers
-    - `5 ^ 3` gives `6`
-
-- `~` (bit-wise invert)
-    - The bit-wise inversion of x is -(x+1)
-    - `~5` gives `-6`. More details at http://stackoverflow.com/a/11810203
+Comparison operators:
 
 - `<` (less than)
-    - Returns whether x is less than y. All comparison operators return `True` or `False`. Note the capitalization of these names.
+    - Returns whether x is less than y. All comparison operators return the boolean values `True` or `False`. Note the capitalization of these names.
     - `5 &lt; 3` gives `False` and `3 &lt; 5` gives `True`.
     - Comparisons can be chained arbitrarily: `3 < 5 < 7` gives `True`.
 
 - `>` (greater than)
     - Returns whether x is greater than y
-    - `5 > 3` returns `True`. If both operands are numbers, they are first converted to a common type. Otherwise, it always returns `False`.
+    - `5 > 3` returns `True`.
 
 - `<=` (less than or equal to)
     - Returns whether x is less than or equal to y
-    - `x = 3; y = 6; x <= y` returns `True`
+    - `x = 3; x <= 6` returns `True`
 
 - `>=` (greater than or equal to)
     - Returns whether x is greater than or equal to y
-    - `x = 4; y = 3; x >= 3` returns `True`
+    - `x = 3; x >= 3` returns `True`
 
 - `==` (equal to)
-    - Compares if the objects are equal
+    - Returns whether the objects are equal
     - `x = 2; y = 2; x == y` returns `True`
     - `x = 'str'; y = 'stR'; x == y` returns `False`
     - `x = 'str'; y = 'str'; x == y` returns `True`
 
 - `!=` (not equal to)
-    - Compares if the objects are not equal
+    - Returns whether the objects are not equal
     - `x = 2; y = 3; x != y` returns `True`
+
+Boolean operators:
 
 - `not` (boolean NOT)
     - If x is `True`, it returns `False`. If x is `False`, it returns `True`.
@@ -134,36 +113,15 @@ Notice that `var = var operation expression` becomes `var operation= expression`
 
 ## Evaluation Order
 
-If you had an expression such as `2 + 3 * 4`, is the addition done first or the multiplication? Our high school maths tells us that the multiplication should be done first. This means that the multiplication operator has higher precedence than the addition operator.
+If you had an expression such as `2 + 3 * 4`, is the addition done first or the multiplication? Our elementary school math class tells us that the multiplication should be done first. This means that the multiplication operator has higher precedence than the addition operator.
 
-The following table gives the precedence table for Python, from the lowest precedence (least binding) to the highest precedence (most binding). This means that in a given expression, Python will first evaluate the operators and expressions lower in the table before the ones listed higher in the table.
+Just like the "order of operations" in math, Python has a similar order of operations from the lowest precedence (least binding) to the highest precedence (most binding). This means that in a given expression, Python will first evaluate the operators and expressions lower in the table before the ones listed higher in the table.
 
-The following table, taken from the [Python reference manual](http://docs.python.org/3/reference/expressions.html#operator-precedence), is provided for the sake of completeness. It is far better to use parentheses to group operators and operands appropriately in order to explicitly specify the precedence. This makes the program more readable. See [Changing the Order of Evaluation](#changing-order-of-evaluation) below for details.
+For the complete table of operator precedence, see the [Python reference manual](http://docs.python.org/3/reference/expressions.html#operator-precedence). We can also explicitly change the order of evaluation by grouping expressions together with parentheses.
 
-- `lambda` : Lambda Expression
-- `if - else` : Conditional expression
-- `or` : Boolean OR
-- `and` : Boolean AND
-- `not x` : Boolean NOT
-- `in, not in, is, is not, <, <=, >, >=, !=, ==` : Comparisons, including membership tests and identity tests
-- `|` : Bitwise OR
-- `^` : Bitwise XOR
-- `&` : Bitwise AND
-- `<<, >>` : Shifts
-- `+, -` : Addition and subtraction
-- `*, /, //, %` : Multiplication, Division, Floor Division and Remainder
-- `+x, -x, ~x` : Positive, Negative, bitwise NOT
-- `**` : Exponentiation
-- `x[index], x[index:index], x(arguments...), x.attribute` : Subscription, slicing, call, attribute reference
-- `(expressions...), [expressions...], {key: value...}, {expressions...}` : Binding or tuple display, list display, dictionary display, set display
+## Changing the Order of Evaluation
 
-The operators which we have not already come across will be explained in later chapters.
-
-Operators with the _same precedence_ are listed in the same row in the above table. For example, `+` and `-` have the same precedence.
-
-## Changing the Order Of Evaluation
-
-To make the expressions more readable, we can use parentheses. For example, `2 + (3 * 4)` is definitely easier to understand than `2 + 3 * 4` which requires knowledge of the operator precedences. As with everything else, the parentheses should be used reasonably (do not overdo it) and should not be redundant, as in `(2 + (3 * 4))`.
+To change the order of evaluation and make expressions more readable we can use parentheses to group operations together. For example, `2 + (3 * 4)` is definitely easier to understand than `2 + 3 * 4`, and requires no knowledge of the operator precedence. As with everything else, the parentheses should be used reasonably (do not overdo it) and should not be redundant, as in `(2 + (3 * 4))`.
 
 There is an additional advantage to using parentheses - it helps us to change the order of evaluation. For example, if you want addition to be evaluated before multiplication in an expression, then you can write something like `(2 + 3) * 4`.
 
@@ -177,11 +135,11 @@ Example (save as `expression.py`):
 
 ```python
 length = 5
-breadth = 2
+width = 2
 
-area = length * breadth
+area = length * width
 print('Area is', area)
-print('Perimeter is', 2 * (length + breadth))
+print('Perimeter is', 2 * (length + width))
 ```
 
 Output:
@@ -194,11 +152,9 @@ Perimeter is 14
 
 **How It Works**
 
-The length and breadth of the rectangle are stored in variables by the same name. We use these to calculate the area and perimeter of the rectangle with the help of expressions. We store the result of the expression `length * breadth` in the variable +area+ and then print it using the +print+ function. In the second case, we directly use the value of the expression `2 * (length + breadth)`
+The length and width of the rectangle are stored in variables by the same name. We use these to calculate the area and perimeter of the rectangle with the help of expressions. We store the result of the expression `length * width` in the variable `area` and then print it using the `print` function. In the second case, we directly use the value of the expression `2 * (length + breadth)`
 in the print function.
-
-Also, notice how Python _pretty-prints_ the output. Even though we have not specified a space between `'Area is'` and the variable `area`, Python puts it for us so that we get a clean nice output and the program is much more readable this way (since we don't need to worry about spacing in the strings we use for output). This is an example of how Python makes life easy for the programmer.
 
 ## Summary
 
-We have seen how to use operators, operands and expressions - these are the basic building blocks of any program. Next, we will see how to make use of these in our programs using statements. 
+We have seen how to use operators, operands, expressions, and parentheses for grouping. These are the basic building blocks of any program. Next, we will see how to make greater use of these in our programs using control flow statements.

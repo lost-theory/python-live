@@ -52,7 +52,7 @@ To verify, open the terminal by pressing `[Command + Space]` keys (to open Spotl
 
 For GNU/Linux users, Python 2 comes installed by default on most distributions. You can use your distribution's package manager to install Python 3, e.g. on Debian & Ubuntu: `sudo apt-get update && sudo apt-get install python3`.
 
-To verify, open the terminal by opening the +Terminal+ application or by pressing `[Alt + F2]` and entering +gnome-terminal+. If that doesn't work, please refer the documentation of your particular GNU/Linux distribution. Now, run `python` (for Python 2) or `python3` (for Python 3) and ensure there are no errors.
+To verify, open the terminal by running the "Terminal" or "gnome-terminal" applications (or consult your distro's documentation on starting a terminal). Now, run `python` (for Python 2) or `python3` (for Python 3) and ensure there are no errors.
 
 You can see the version of Python on the screen by running:
 

@@ -24,8 +24,8 @@ Observe that a `NameError` is raised and also the location where the error was d
 We will **try** to read input from the user. Press `[ctrl-d]` and see what happens.
 
 ```python
->>> s = input('Enter something --> ')
-Enter something --> Traceback (most recent call last):
+>>> s = raw_input('Enter something: ')
+Enter something: Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 EOFError
 ```

@@ -1,6 +1,6 @@
 # Control Flow
 
-In the programs we have seen till now, there has always been a series of statements faithfully executed by Python in exact top-down order. What if you wanted to change the flow of how it works? For example, you want the program to take some decisions and do different things depending on different situations, such as printing 'Good Morning' or 'Good Evening' depending on the time of the day?
+In the programs we have seen till now, there has always been a series of statements faithfully executed by Python in exact top-down order. What if you wanted to change the flow of how it works? For example, you want the program to take some decisions and do different things depending on different situations, such as printing 'Good Morning' or 'Good Evening' depending on the time of the day? Or repeating some part of the program until something happens?
 
 As you might have guessed, this is achieved using control flow statements. There are three control flow statements in Python - `if`, `for` and `while`.
 
@@ -8,20 +8,45 @@ As you might have guessed, this is achieved using control flow statements. There
 
 The `if` statement is used to check a condition: *if* the condition is true, we run a block of statements (called the _if-block_), *else* we process another block of statements (called the _else-block_). The *else* clause is optional.
 
-Example (save as `if.py`):
+```python
+number = 23
+guess = int(raw_input('Enter an integer: '))
 
-<!-- Tags expansion does not happen inside code blocks https://github.com/GitbookIO/gitbook/issues/707 -->
-<pre><code class="lang-python">{% include "./programs/if.py" %}</code></pre>
+if guess == number:
+    print('Congratulations, you guessed it!')
+elif guess < number:
+    print('No, it is a little higher than that')
+else:
+    # this is the `else` clause, you must have guessed > number to reach here
+    print('No, it is a little lower than that')
+
+print('Done')
+```
 
 Output:
 
-<pre><code>{% include "./programs/if.txt" %}</code></pre>
+```
+$ python if.py
+Enter an integer: 50
+No, it is a little lower than that
+Done
+
+$ python if.py
+Enter an integer: 22
+No, it is a little higher than that
+Done
+
+$ python if.py
+Enter an integer: 23
+Congratulations, you guessed it!
+Done
+```
 
 **How It Works**
 
-In this program, we take guesses from the user and check if it is the number that we have. We set the variable +number+ to any integer we want, say `23`. Then, we take the user's guess using the `input()` function. Functions are just reusable pieces of programs. We'll read more about them in the [next chapter](./09_functions.md#functions).
+In this program, we take guesses from the user and check if it is the number that we have. We set the variable `number` to any integer we want, say `23`. Then, we take the user's guess using the `raw_input()` function. Functions are just reusable pieces of programs. We'll read more about them in the [next chapter](./09_functions.md#functions).
 
-We supply a string to the built-in `input` function which prints it to the screen and waits for input from the user. Once we enter something and press kbd:[enter] key, the `input()` function returns what we entered, as a string. We then convert this string to an integer using `int` and then store it in the variable `guess`. Actually, the `int` is a class but all you need to know right now is that you can use it to convert a string to an integer (assuming the string contains a valid integer in the text).
+We supply a string to the built-in `input` function which prints it to the screen and waits for input from the user. Once we enter something and press the `[enter]` key, the `raw_input()` function returns what we entered, as a string. We then convert this string to an integer using `int` and then store it in the variable `guess`. Actually, the `int` is a class but all you need to know right now is that you can use it to convert a string to an integer (assuming the string contains a valid integer in the text).
 
 Next, we compare the guess of the user with the number we have chosen. If they are equal, we print a success message. Notice that we use indentation levels to tell Python which statements belong to which block. This is why indentation is so important in Python. I hope you are sticking to the "consistent indentation" rule. Are you?
 

@@ -33,7 +33,7 @@ Notice that Python gives you the output of the line immediately! What you just e
 
 ### How to Quit the Interpreter Prompt
 
-If you are using a GNU/Linux or OS X shell, you can exit the interpreter prompt by pressing `[ctrl + d]`. If you are using the Windows command prompt, press `[ctrl + z]` followed by the `[enter]` key. On any platform you can enter `exit()` or `quit()` (note: remember to include the parentheses, `()`) followed by the `[enter]` key.
+If you are using a **GNU/Linux** or **OS X** shell, you can exit the interpreter prompt by pressing `[ctrl + d]`. If you are using the **Windows** command prompt, press `[ctrl + z]` followed by the `[enter]` key. On any platform you can enter `exit()` or `quit()` (note: remember to include the parentheses, `()`) followed by the `[enter]` key.
 
 ## Choosing An Editor
 
@@ -43,7 +43,7 @@ To create our Python source files, we need an editor software where you can type
 
 One of the very basic requirements is _syntax highlighting_ where all the different parts of your Python program are colorized so that you can _see_ your program and visualize its running.
 
-If you have no idea where to start, I would recommend using [PyCharm Educational Edition](https://www.jetbrains.com/pycharm-educational/) software which is available on Windows, Mac OS X and GNU/Linux. Details in the next section.
+If you have no idea where to start, I would recommend using [PyCharm Educational Edition](https://www.jetbrains.com/pycharm-educational/) software which is available on Windows, Mac OS X and GNU/Linux.
 
 If you are using Windows, *do not use Notepad* - it is a bad choice because it does not do syntax highlighting and also importantly it does not support indentation of the text which is very important in our case as we will see later. Good editors will automatically do this.
 
