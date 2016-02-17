@@ -54,7 +54,7 @@ In case you are willing to take the time to learn Vim or Emacs, then I highly re
 
 To reiterate, please choose a proper editor - it can make writing Python programs more fun and easy.
 
-## Using A Source File
+## Using a Source File
 
 Now let's get back to programming. There is a tradition that whenever you learn a new programming language, the first program that you write and run is the 'Hello World' program - all it does is just say 'Hello World' when you run it. As Simon Cozens[^1] says, it is the "traditional incantation to the programming gods to help you learn the language better."
 
