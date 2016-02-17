@@ -13,20 +13,19 @@ Once you have started Python, you should see `>>>` where you can start typing st
 At the Python interpreter prompt, type:
 
 ```python
-print "Hello World"
+print("Hello World")
 ```
 
 followed by the `[enter]` key. You should see the words `Hello World` printed to the screen.
 
 Here is an example of what you should be seeing, when using a Mac OS X computer. The details about the Python software will differ based on your computer, but the part from the prompt (i.e. from `>>>` onwards) should be the same regardless of the operating system.
 
-<!-- The output should match pythonVersion variable in book.json -->
 ```python
-> python
-Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
+$ python
+Python 2.7.6 (default, Mar 22 2014, 22:59:56)
 [GCC 4.8.2] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
->>> print "Hello World"
+>>> print("Hello World")
 Hello World
 ```
 
