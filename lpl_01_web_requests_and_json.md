@@ -1,8 +1,8 @@
 ## Web requests and JSON
 
-One very common task you will face while programming is getting two systems to talk to each other. Either you want to pull some data from an existing service into a program you're writing, you want to send some data somewhere, etc.
+One very common task you will face while programming is getting two systems to talk to each other. Either you want to pull some data from an existing service into a program, save it to disk, send data from one system to another, etc.
 
-Since many systems are on the web, it's very common to do this communication via **web requests**. You can use Python to make the same requests you would make in a web browser. Many of these requests use **JSON**, which is a common data format for communicating between systems. Let's look at making web requests first, then we will look at how to use JSON.
+Since many systems are on the web, it's very common to do this communication via **web requests**. You can use Python to make the same requests you would make in a web browser. Many of these requests use **JSON**, which is a common format for exchanging data between two systems. Let's look at making web requests first, then look at how to use JSON with web APIs.
 
 ## Making web requests
 
@@ -21,7 +21,7 @@ Right click on the page and click "View source" or "View page source". This is t
 ['__doc__', '__init__', '__iter__', '__module__', '__repr__', 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
 ```
 
-> **Note**: The use of `urlopen` here is just to get us up and running quickly using Python's standard library. In the ""Installing open source libraries" chapter we will learn how to install the `requests` package, which is much more powerful than `urlopen` and just as simple to use.
+> **Note**: The use of `urlopen` here is just to get us up and running quickly using Python's standard library. In the "Installing open source libraries" chapter we will learn how to install the `requests` package, which is much more powerful than `urlopen` and just as simple to use, particularly for sending data via HTTP.
 
 The `response` object returned by `urlopen` is what is called a "file-like" object. From the `dir` call we can see it has many of the same methods as the `file` type, like `read` and `close`. Let's try `read`-ing it:
 
@@ -30,13 +30,13 @@ The `response` object returned by `urlopen` is what is called a "file-like" obje
 >>> len(page)
 66739
 >>> page
-'<!DOCTYPE html>\n<html lang="en" dir="ltr" class="client-nojs">\n<head>\n<meta charset="UTF-8" />\n<title>Wikipedia, the free encyclopedia</title>\n<script>document.documentElement.className........[lots of text skipped].........</html>\n'
+'<!DOCTYPE html>\n<html lang="en" dir="ltr" class="client-nojs">\n<head>\n<meta charset="UTF-8" />\n<title>Wikipedia, the free encyclopedia</title>\n<script>document.documentElement.className........[snipped 66k of text].........</html>\n'
 ```
 
-If you run that code, you'll see the string is quite large! That's 66k characters = ~66 kilobytes of text. Let's try to do whittle it down to something more useful. If we view the page in our browser, we see a box called "On this day..." which lists interesting events that happened on this day in history. Let's try to write some Python code to grab this information. If we view the source around that box, we see it starts here:
+If you run that code, you'll see the string is quite large! That's 66k characters = ~66 kilobytes of text. Let's try to whittle it down to something more useful. If we view the page in our browser, we see a box called "On this day..." which lists interesting events that happened on this day in history. Let's try to write some Python code to grab this information. If we view the source around that box, we see it starts here:
 
 ```html
-<h2 id="mp-otd-h2" style="...[skipped]..."><span class="mw-headline" id="On_this_day...">On this day...</span></h2>
+<h2 id="mp-otd-h2" style="[snip]"><span class="mw-headline" id="On_this_day...">On this day...</span></h2>
 ```
 
 Let's see if we can find this section in the `page` string. First, let's search for the text "On_this_day", and then slice off the next 500 characters, just to see what it looks like:
@@ -157,7 +157,7 @@ True
 >>> #round-trip encoding and decoding should produce the same object, if all the data types are compatible
 ```
 
-JSON is not only used to talk to the web, it is commonly used in pure Python or purely serverside code, e.g. to read and write Python data structures to a file. See the [load](https://docs.python.org/2/library/json.html#json.load) and [dump](https://docs.python.org/2/library/json.html#json.dump) functions, which do the same thing as `loads` and `dumps`, but with file objects instead of strings.
+JSON is not only used to talk to the web, it is commonly used in pure Python or purely serverside code, e.g. to read and write Python data structures to a file or database. See the [`load`](https://docs.python.org/2/library/json.html#json.load) and [`dump`](https://docs.python.org/2/library/json.html#json.dump) functions, which do the same thing as `loads` and `dumps`, but with file objects instead of strings.
 
 ## Talking to a JSON web API
 
@@ -278,13 +278,13 @@ To do those things we need to build on top of this simple API call, for example 
 
 As we write these functions, we would be making our own API on top of the Wikipedia API. This is called "[abstraction](https://en.wikipedia.org/wiki/Abstraction_(computer_science))" and it is very common in programming. When you program in Python, you are writing APIs and abstractions on top of other abstractions and so on until you get down to the hardware level.
 
-If you're interested in learning more about abstraction, writing your own APIs, or how to handle talking to a web service, I highly recommend you try implementing some of these.
+If you're interested in learning more about abstraction, writing your own APIs, or how to communicate with a web service, I highly recommend you try implementing some of these functions.
 
 If you're interested in jumping right into using the Wikipedia data, someone [has already built a Python library to do that](https://pypi.python.org/pypi/wikipedia). We will learn how to install these libraries in the "Installing open source libraries" chapter.
 
 In general, if you want to interact with some kind of web service, website, system, or API, try the following:
 
-* Google for "<name> python". This will show you if someone has already written a Python library, script, blog post, etc. that does what you want to do.
+* Google for "<name> python" or "<name> python library" (e.g. "[wikipedia python library](https://www.google.com/search?q=wikipedia+python+library)"). This will show you if someone has already written a Python library, script, blog post, etc. that does what you want to do.
 * Google for "<name> API". This will show you if there is a documented API or library in another language that you could write your own library against.
 * If either of those fail, you may have to resort to screen scraping, reverse engineering, contacting the owner of the service, or asking around in the community. Also, if you end up scraping or reverse engineering a website, be sure to read the site's [robots.txt](https://en.wikipedia.org/wiki/Robots_exclusion_standard) and terms of use.
 * You could also repeat the same process for competitors, similar sites, or try to gain access to the system or its data in some other way. For example, say Wikipedia didn't provide an API and scraping wasn't possible. Could you try another online encyclopedia? Could you get a ["dump" of the data](https://dumps.wikimedia.org/) from Wikipedia and build an API that way?
