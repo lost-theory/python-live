@@ -27,7 +27,7 @@ To see the omitted Byte of Python chapters, see the [original book](http://pytho
 
 New material created for Learn Python Live:
 
-* Ch. 1: [Web requests and JSON](lpl_01_web_requests_and_json.md)
+* Ch. 1: [HTTP requests and JSON](lpl_01_http_requests_and_json.md)
 
 ## License
 

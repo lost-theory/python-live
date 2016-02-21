@@ -1,10 +1,10 @@
-## Web requests and JSON
+## HTTP requests and JSON
 
 One very common task you will face while programming is getting two systems to talk to each other. Either you want to pull some data from an existing service into a program, save it to disk, send data from one system to another, etc.
 
-Since many systems are on the web, it's very common to do this communication via **web requests**. You can use Python to make the same requests you would make in a web browser. Many of these requests use **JSON**, which is a common format for exchanging data between two systems. Let's look at making web requests first, then look at how to use JSON with web APIs.
+Since many systems are on the web, it's very common to do this communication via **HTTP requests**. You can use Python to make the same requests you would make in a web browser. Many of these requests use **JSON**, which is a common format for exchanging data between two systems. Let's look at making HTTP requests first, then look at how to use JSON with web APIs.
 
-## Making web requests
+## Making HTTP requests
 
 Let's visit the home page of Wikipedia in our browser:
 
