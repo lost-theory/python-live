@@ -284,8 +284,8 @@ If you're interested in jumping right into using the Wikipedia data, someone [ha
 
 In general, if you want to interact with some kind of web service, website, system, or API, try the following:
 
-* Google for "<name> python" or "<name> python library" (e.g. "[wikipedia python library](https://www.google.com/search?q=wikipedia+python+library)"). This will show you if someone has already written a Python library, script, blog post, etc. that does what you want to do.
-* Google for "<name> API". This will show you if there is a documented API or library in another language that you could write your own library against.
+* Google for "\<name\> python" or "\<name\> python library" (e.g. "[wikipedia python library](https://www.google.com/search?q=wikipedia+python+library)"). This will show you if someone has already written a Python library, script, blog post, etc. that does what you want to do.
+* Google for "\<name\> API". This will show you if there is a documented API or library in another language that you could write your own library against.
 * If either of those fail, you may have to resort to screen scraping, reverse engineering, contacting the owner of the service, or asking around in the community. Also, if you end up scraping or reverse engineering a website, be sure to read the site's [robots.txt](https://en.wikipedia.org/wiki/Robots_exclusion_standard) and terms of use.
 * You could also repeat the same process for competitors, similar sites, or try to gain access to the system or its data in some other way. For example, say Wikipedia didn't provide an API and scraping wasn't possible. Could you try another online encyclopedia? Could you get a ["dump" of the data](https://dumps.wikimedia.org/) from Wikipedia and build an API that way?
 * Another way to find APIs is to try an API directory site like [ProgrammableWeb](http://www.programmableweb.com/apis/directory).
