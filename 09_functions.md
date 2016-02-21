@@ -8,7 +8,6 @@ Functions are defined using the `def` keyword. After this keyword comes an *iden
 
 Example (save as `function1.py`):
 
-<pre><code class="lang-python">{% include "./programs/function1.py" %}</code></pre>
 ```python
 def say_hello():
     # indented block belonging to the function
@@ -198,5 +197,3 @@ Automated tools can retrieve the documentation from your program in this manner.
 ## Summary
 
 We have learned many aspects of functions but note that we still haven't covered all aspects of them. However, we have already covered most of what you'll use on an everyday basis.
-
-Next, we will see how to use as well as create Python modules.
