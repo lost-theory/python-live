@@ -93,7 +93,7 @@ It would be better if there was an official method to retrieve data from Wikiped
 
 ## APIs
 
-In addition to making the same requests a web browser would make, some web services provide an **API**: **application programming interface**. APIs are typically a documented list of "endpoints" or "actions" with an explanation on how to pass input to / collect output from those endpoints. Think of them as "function calls" into an external system. For example, Wikipedia provides an API over the web:
+In addition to serving up the requests made by web browsers, some sites and services provide an **API**: **application programming interface**. APIs are typically a documented list of "endpoints" or "actions" with an explanation on how to pass input to / collect output from those endpoints. Unlike the Wikipedia homepage, these API actions are are meant to be called and consumed programmatically. Think of them as "function calls" into an external system. For example, Wikipedia provides a web API for much of its data and functionality:
 
 https://www.mediawiki.org/wiki/API:Main_page
 
@@ -106,7 +106,7 @@ That page gives you an overview of what the API does, what format of data it use
 * Uploading files
 * etc.
 
-Basically everything exposed in Wikipedia's interface has a corresponding API call that can be controlled programmatically.
+The major pieces of functionality exposed in Wikipedia's user interface have a corresponding API call that can be controlled programmatically.
 
 > **Note**: An API doesn't need to be connected to a web service. There are many non-web APIs. Many libraries, including the ones in Python's stdlib, are essentially APIs. For example, the `open` function and the [os.path](https://docs.python.org/2/library/os.path.html#module-os.path), [shutil](https://docs.python.org/2/library/shutil.html#module-shutil), etc. modules can be considered Python's "filesystem API".
 
