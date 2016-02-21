@@ -2,7 +2,7 @@
 
 One very common task you will face while programming is getting two systems to talk to each other. Either you want to pull some data from an existing service into a program you're writing, you want to send some data somewhere, etc.
 
-Since many systems are on the web, it's very common to do this communication via **web requests**. You can use Python to make the same requests you would make in a web browser.
+Since many systems are on the web, it's very common to do this communication via **web requests**. You can use Python to make the same requests you would make in a web browser. Many of these requests use **JSON**, which is a common data format for communicating between systems. Let's look at making web requests first, then we will look at how to use JSON.
 
 ## Making web requests
 
@@ -118,7 +118,7 @@ This is all we need to start playing around with the call in Python. Before we d
 
 https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Physics
 
-It's returning an HTML page which has a listing of data, and that if we want the "non-HTML representation of the JSON format, set format=json". Let's try that by adding `&format=json` to the end of the URL:
+It's returning an HTML page which has a listing of data for debugging purposes, and that if we want the "non-HTML representation of the JSON format, set format=json". Let's try that by adding `&format=json` to the end of the URL:
 
 https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Physics&format=json
 
@@ -130,7 +130,7 @@ Let's put that in a `urlopen` call:
 '{"batchcomplete":"","continue":{"cmcontinue":"page|46454c444d414e2c2048554d450a48554d452046454c444d414e|48407923","continue":"-||"},"query":{"categorymembers":[{"pageid":22939,"ns":0,"title":"Physics"},{"pageid":22688097,"ns":0,"title":"Branches of physics"},{"pageid":3445246,"ns":0,"title":"Glossary of classical physics"},{"pageid":24489,"ns":0,"title":"Outline of physics"},{"pageid":1653925,"ns":100,"title":"Portal:Physics"},{"pageid":33327002,"ns":0,"title":"Cabbeling"},{"pageid":151066,"ns":0,"title":"Classical physics"},{"pageid":19725090,"ns":0,"title":"Cold"},{"pageid":47723069,"ns":0,"title":"Epicatalysis"},{"pageid":685311,"ns":0,"title":"Experimental physics"}]}}'
 ```
 
-Now what do we do? It kind of looks like a Python dictionary with some data nested further inside, but it's all inside of a string. How do we get the data out? As the documentation mentioned, this is the "JSON" formatted data, what is JSON?
+Now what do we do? It kind of looks like a Python dictionary with some data nested further inside, but it's all mashed into a string. How do we get the data out of the string? As the documentation mentioned, this is the "JSON" formatted data, what is JSON?
 
 ## Using JSON
 
@@ -156,6 +156,8 @@ Examples:
 True
 >>> #round-trip encoding and decoding should produce the same object, if all the data types are compatible
 ```
+
+JSON is not only used to talk to the web, it is commonly used in pure Python or purely serverside code, e.g. to read and write Python data structures to a file. See the [load](https://docs.python.org/2/library/json.html#json.load) and [dump](https://docs.python.org/2/library/json.html#json.dump) functions, which do the same thing as `loads` and `dumps`, but with file objects instead of strings.
 
 ## Talking to a JSON web API
 
