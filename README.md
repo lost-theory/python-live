@@ -2,24 +2,32 @@
 
 This is the repository for Learn Python Live, an accelerated, interactive class teaching Python.
 
-The majority of this material comes from "A Byte of Python", an open source book that teaches programming using the Python language. It was created by [Swaroop C H](http://www.swaroopch.com/) and is available [here](http://python.swaroopch.com/). All credit goes to Swaroop for creating such a great resource for learning Python. The original "A Byte of Python" material has been for forked for use in a class setting. See the bottom section for a list of changes.
+The first half of this material comes from "A Byte of Python", an open source book that teaches programming using the Python language. It was created by [Swaroop C H](http://www.swaroopch.com/) and is available [here](http://python.swaroopch.com/). All credit goes to Swaroop for creating such a great resource for learning Python. The original "A Byte of Python" material has been for forked for use in a class setting. See the bottom section for a list of changes.
+
+The second half of the material is new and walks you through more functionality in the standard library, installing open source Python libraries, and writing a simple web application with Flask.
 
 ## Chapters
 
-* Ch. 3: [About Python](03_about_python.md)
-* Ch. 4: [Installation](04_installation.md) (skip if you are using Koding.com)
-* Ch. 5: [First Steps](05_first_steps.md)
-* Ch. 6: [Basics](06_basics.md)
-* Ch. 7: [Operators and Expressions](07_op_exp.md)
-* Ch. 8: [Control flow](08_control_flow.md)
-* Ch. 9: [Functions](09_functions.md)
-* Ch. 11: [Data Structures](11_data_structures.md)
-* Ch. 10: [Modules](10_modules.md)
-* Ch. 14: [Input and Output](14_io.md)
-* Ch. 13: [Object Oriented Programming](13_oop.md)
-* Ch. 15: [Exceptions](15_exceptions.md)
+Byte of Python chapters:
 
-To see the omitted chapters, see the [original book](http://python.swaroopch.com/).
+* BoP Ch. 3: [About Python](03_about_python.md) (skip this if you want to start coding right away)
+* BoP Ch. 4: [Installation](04_installation.md) (skip if you are using Koding.com)
+* BoP Ch. 5: [First Steps](05_first_steps.md)
+* BoP Ch. 6: [Basics](06_basics.md)
+* BoP Ch. 7: [Operators and Expressions](07_op_exp.md)
+* BoP Ch. 8: [Control Flow](08_control_flow.md)
+* BoP Ch. 9: [Functions](09_functions.md)
+* BoP Ch. 11: [Data Structures](11_data_structures.md)
+* BoP Ch. 10: [Modules](10_modules.md)
+* BoP Ch. 14: [Input and Output](14_io.md)
+* BoP Ch. 13: [Object Oriented Programming](13_oop.md)
+* BoP Ch. 15: [Exceptions](15_exceptions.md)
+
+To see the omitted Byte of Python chapters, see the [original book](http://python.swaroopch.com/).
+
+New material created for Learn Python Live:
+
+* Ch. 1: [Web requests and JSON](lpl_01_web_requests_and_json.md)
 
 ## License
 
@@ -27,8 +35,8 @@ This book is licensed under a [Creative Commons Attribution-ShareAlike 4.0 Inter
 
 This means:
 
-- You are free to Share i.e. to copy, distribute and transmit this book
-- You are free to Remix i.e. to make changes to this book (especially translations)
+- You are free to share i.e. to copy, distribute and transmit this book
+- You are free to remix i.e. to make changes to this book
 - You are free to use it for commercial purposes
 
 Please note:
@@ -39,10 +47,10 @@ Please note:
 
 ## Changes from "A Byte of Python"
 
-* Python 3 -> Python 2.
+* Python 3 -> Python 2 (though I kept some of the parentheses on `print` statements where it doesn't affect the output).
 * Cut some beginning chapters and appendices to give us just the essential information about learning the language.
 * Removed files related to the publishing of the book (book.json, etc.).
 * Put Ch. 11 (Data Structures) ahead of Ch. 10 (Modules) so we can write a program using simple values, conditions, loops, functions, and lists/dicts without needing to learn about modules yet. Ch. 10 (Modules) will then be our stepping stone to the standard library and writing larger programs.
 * Put Ch. 14 (IO using files) ahead of Ch. 13 (OOP) so we can teach files first and then teach OOP on its own as a larger subject.
 * Some small edits and paring down of chapter content to make it easier to teach interactively.
-* Removed example programs (they are available in the original repo [here](https://github.com/swaroopch/byte-of-python/tree/master/programs)).
+* Removed example programs (they are available in the original repo [here](https://github.com/swaroopch/byte-of-python/tree/master/programs)), example code is now embedded directly into the chapters (to make it easier to browse the book directly on Github).
