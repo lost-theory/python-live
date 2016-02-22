@@ -644,7 +644,7 @@ If you want to keep `stdout` and `stderr` separate you need to use the more verb
 
 ## Working with the filesystem (`os`, `os.path`, `glob`)
 
-In the `subprocess` section above we saw how to run the `ls` command to get a directory listing. We don't need to call out to the shell in order to do this, Python has functionality to read directories and file and much more. Many of these are in the `os` module. First, getting a directory listing:
+In the `subprocess` section above we saw how to run the `ls` command to get a directory listing. We don't need to call out to the shell in order to do this, Python has functionality to operate on files and directories. Many of these are in the `os` module. Here's how to get a directory listing:
 
 ```python
 >>> os.listdir("ex3")
@@ -732,7 +732,7 @@ So far most of these have been pretty low level. The `os` module provides one hi
 ('./.git/hooks', [], ['applypatch-msg.sample', 'commit-msg.sample', 'post-update.sample', 'pre-applypatch.sample', 'pre-commit.sample', 'pre-push.sample', 'pre-rebase.sample', 'prepare-commit-msg.sample', 'update.sample'])
 ```
 
-There is also a submodule within `os` called `os.path` which also provides a few higher level functions:
+There is also a submodule within `os` called `os.path` which provides a few higher level functions:
 
 ```python
 >>> os.path.join("/home/Steven", "ex3")
@@ -753,7 +753,7 @@ True
 ('/home/Steven', 'ex3')
 ```
 
-Lastly, here is one more piece of functionality that commonly used on the command line: wildcard patterns using `glob.glob`. It can be used to match multiple files and directories in the given path:
+Lastly, here is one more piece of functionality that is commonly used on the command line: wildcard patterns using `glob.glob`. It can be used to match multiple files and directories in the given path:
 
 ```python
 >>> import glob
