@@ -531,7 +531,7 @@ Python is very useful as a systems language because it allows you to easily plug
 
 First, a historical note. Over the years, Python has picked up about a dozen different ways to call other programs (`os.system`, `commands.getoutput`, `popen`, `popen2`, `popen3`, `popen4`, ...). You can mostly ignore all these methods and focus on the `subprocess` module, which is the newest method and mostly covers all of the old ways with a more modern interface.
 
-Let's look at some basic usage of `subprocess`. For these examples I will be using two commands: 1. `git` for cloning a git repo, and 2. the unix `ls` command, for printing a list of files. Let's first run them from the command line to start:
+Let's look at some basic usage of `subprocess`. For these examples I will be using two commands: `git` for cloning a git repo, and the unix `ls` command for printing a list of files. Let's first run them from the command line to see what they do:
 
 ```bash
 $ git clone https://gist.github.com/0201a10fecff25ae0a12.git ex3
@@ -562,7 +562,7 @@ Checking connectivity... done.
 0
 ```
 
-There are two things to note. **First**, we had to pass a list of strings to run the command. This is a protection against a vulnerability called "shell injection". By default, the `subprocess` module will only allow a single command to run, and it will try to escape any dangerous input passed into the command. Even in this case where we know the input is safe, we still have to. THere are ways around this, but they should be avoided if possible. **Second**, the other thing to notice is that the `result` returned is `0`. In unix systems, an exit code of `0` means success, while any other number indicates an error (and different numbers represent different kinds of errors). So we know our command was successful in this case.
+There are two things to note. **First**, we had to pass a list of strings to run the command. This is a protection against a vulnerability called "shell injection". By default, the `subprocess` module will only allow a single command to run, and it will try to escape any dangerous input passed into the command. Even in this case where we know the input is safe, we still have to ues a list of strings intead of the single string we typed in on the command line. There are ways around this, but they should be avoided if possible. **Second**, the other thing to notice is that the `result` returned is `0`. In unix systems, an exit code of `0` means success, while any other number indicates an error (and different numbers represent different kinds of errors). So we know our command was successful in this case.
 
 What happens if we try to run the same command twice? It will throw an error because the directory already exists.
 
