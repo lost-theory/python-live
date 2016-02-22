@@ -311,7 +311,7 @@ We saw Python's basic mathematical operators such as `+` and `-` and `**` in [By
 >>> math.degrees(math.pi)
 180.0
 >>> math.radians(180)
-1.5707963267948966
+3.141592653589793
 ```
 
 ## `string`
