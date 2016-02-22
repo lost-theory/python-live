@@ -93,7 +93,7 @@ It would be better if there was an official method to retrieve data from Wikiped
 
 ## APIs
 
-In addition to serving up the requests made by web browsers, some sites and services provide an **API**: **application programming interface**. APIs are typically a documented list of "endpoints" or "actions" with an explanation on how to pass input to / collect output from those endpoints. Unlike the Wikipedia homepage, these API actions are are meant to be called and consumed programmatically. Think of them as "function calls" into an external system. For example, Wikipedia provides a web API for much of its data and functionality:
+In addition to serving up the requests made by web browsers, some sites and services provide an **API**: **application programming interface**. APIs are typically a documented list of "endpoints" or "actions" with an explanation on how to pass input to / collect output from those endpoints. Unlike the Wikipedia homepage, these API actions are meant to be called and consumed programmatically. Think of them as "function calls" into an external system. For example, Wikipedia provides a web API for much of its data and functionality:
 
 https://www.mediawiki.org/wiki/API:Main_page
 
