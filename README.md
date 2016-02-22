@@ -27,7 +27,10 @@ To see the omitted Byte of Python chapters, see the [original book](http://pytho
 
 New material created for Learn Python Live:
 
-* Ch. 1: [HTTP requests and JSON](lpl_01_http_requests_and_json.md)
+* Ch. 1: [Advanced Python features](lpl_01_advanced_python_features.md)
+* Ch. 2: [Useful modules in the standard library](lpl_02_useful_stdlib_modules.md)
+* Ch. 3: [Making HTTP requests and using JSON](lpl_03_http_requests_and_json.md)
+* Ch. 4: [Installing open source libraries](lpl_04_installing_new_modules.md)
 
 ## License
 
