@@ -153,7 +153,7 @@ Finally, `datetime` has the same `strftime` and `strptime` methods as the `time`
 '2016'
 >>> datetime.now().strftime("%Y-%m-%d")
 '2016-02-21'
->>> #there is also one shortcut, isoformat, it return the datetime in "ISO 8601" format
+>>> #there is also one shortcut, isoformat, it returns the datetime in "ISO 8601" format
 >>> datetime.now().isoformat()
 '2016-02-21T18:30:58.544215'
 
