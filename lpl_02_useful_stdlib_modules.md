@@ -1,6 +1,6 @@
 ## Useful modules in the stdlib
 
-So far we've only covered one module in the standard library: `sys`. There are over 300 modules in Python's standard library. I'm going to cover a few of the ones. But first, a little story.
+So far we've only covered one module in the standard library: `sys`. There are over 300 modules in Python's standard library. I'm going to cover a few of the ones you might find useful. But first, a little story.
 
 ## A quick example of the stdlib's usefulness
 
