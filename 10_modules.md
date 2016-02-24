@@ -108,7 +108,7 @@ When you supply a module name to the`dir()` function, it returns the list of the
 
 Example:
 
-```python
+```bash
 $ python
 >>> import sys
 >>> #get names of attributes in sys module, only a few entries are shown here...

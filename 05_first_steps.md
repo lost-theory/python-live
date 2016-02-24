@@ -20,7 +20,7 @@ followed by the `[enter]` key. You should see the words `Hello World` printed to
 
 Here is an example of what you should be seeing, when using a Mac OS X computer. The details about the Python software will differ based on your computer, but the part from the prompt (i.e. from `>>>` onwards) should be the same regardless of the operating system.
 
-```python
+```bash
 $ python
 Python 2.7.6 (default, Mar 22 2014, 22:59:56)
 [GCC 4.8.2] on linux2
