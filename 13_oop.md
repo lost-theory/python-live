@@ -4,14 +4,6 @@ In all the programs we wrote till now, we have designed our program around funct
 
 Classes and objects are the two main aspects of object oriented programming. A **class** creates a new _type_ where **objects** are **instances** of the class. An analogy is that you can have variables of type `int` which translates to saying that variables that store integers are variables which are instances (objects) of the `int` class.
 
-> **Note for Static Language Programmers**
-> 
-> Note that even integers are treated as objects (of the `int` class). This is unlike C++ and Java (before version 1.5) where integers are primitive native types.
-> 
-> See `help(int)` for more details on the class.
-> 
-> C# and Java 1.5 programmers will find this similar to the _boxing and unboxing_ concept.
-
 Objects can store data using ordinary variables that _belong_ to the object. Variables that belong to an object or class are referred to as **fields**. Objects can also have functionality by using functions that _belong_ to a class. Such functions are called **methods** of the class. This terminology is important because it helps us to differentiate between functions and variables which are independent and those which belong to a class or object. Collectively, the fields and methods can be referred to as the **attributes** of that class.
 
 Fields are of two types - they can belong to each instance/object of the class or they can belong to the class itself. They are called **instance variables** and **class variables** respectively.
@@ -25,7 +17,7 @@ Class methods have only one specific difference from ordinary functions - they m
 Although, you can give any name for this parameter, it is _strongly recommended_ that you use the name `self` - any other name is definitely frowned upon. There are many advantages to using a standard name - any reader of your program will immediately recognize it and even specialized IDEs (Integrated Development Environments) can help you if you use `self`.
 
 > **Note for C++/Java/C# Programmers**
-> 
+>
 > The `self` in Python is equivalent to the `this` pointer in C++ and the `this` reference in Java and C#.
 
 You must be wondering how Python gives the value for `self` and why you don't need to give a value for it. An example will make this clear. Say you have a class called `MyClass` and an instance of this class called `myobject`. When you call a method of this object as `myobject.method(arg1, arg2)`, this is automatically converted by Python into `MyClass.method(myobject, arg1, arg2)` - this is all the special `self` is about.
@@ -36,11 +28,20 @@ This also means that if you have a method which takes no arguments, then you sti
 
 The simplest class possible is shown in the following example (save as `oop_simplestclass.py`).
 
-<pre><code class="lang-python">{% include "./programs/oop_simplestclass.py" %}</code></pre>
+```python
+class Person(object):
+    pass # An empty block
+
+p = Person()
+print(p)
+```
 
 Output:
 
-<pre><code>{% include "./programs/oop_simplestclass.txt" %}</code></pre>
+```bash
+$ python oop_simplestclass.py
+<__main__.Person instance at 0x10171f518>
+```
 
 **How It Works**
 
@@ -54,15 +55,29 @@ Notice that the address of the computer memory where your object is stored is al
 
 We have already discussed that classes/objects can have methods just like functions except that we have an extra `self` variable. We will now see an example (save as `oop_method.py`).
 
-<pre><code class="lang-python">{% include "./programs/oop_method.py" %}</code></pre>
+```python
+class Person(object):
+    def greetings(self):
+        print('Hello, how are you?')
+
+p = Person()
+p.greetings()
+
+# You could also call `greetings` directly on the object returned by Person()
+Person().greetings()
+```
 
 Output:
 
-<pre><code>{% include "./programs/oop_method.txt" %}</code></pre>
+```bash
+$ python oop_method.py
+Hello, how are you?
+Hello, how are you?
+```
 
 **How It Works**
 
-Here we see the `self` in action. Notice that the `say_hi` method takes no parameters but still has the `self` in the function definition.
+Here we see the `self` in action. Notice that the `greetings` method takes no parameters but still has the `self` in the function definition.
 
 ## The `__init__` method
 
@@ -72,11 +87,24 @@ The `__init__` method is run as soon as an object of a class is instantiated. Th
 
 Example (save as `oop_init.py`):
 
-<pre><code class="lang-python">{% include "./programs/oop_init.py" %}</code></pre>
+```python
+class Person(object):
+    def __init__(self, name):
+        self.name = name
+
+    def greetings(self):
+        print('Hello, my name is', self.name)
+
+p = Person('Swaroop')
+p.greetings()
+```
 
 Output:
 
-<pre><code>{% include "./programs/oop_init.txt" %}</code></pre>
+```bash
+$ python oop_init.py
+Hello, my name is Swaroop
+```
 
 **How It Works**
 
@@ -84,7 +112,7 @@ Here, we define the `__init__` method as taking a parameter `name` (along with t
 
 Most importantly, notice that we do not explicitly call the `__init__` method but pass the arguments in the parentheses following the class name when creating a new instance of the class. This is the special significance of this method.
 
-Now, we are able to use the `self.name` field in our methods which is demonstrated in the `say_hi` method.
+Now, we are able to use the `self.name` field in our methods which is demonstrated in the `greetings` method.
 
 ## Class And Object Variables
 
@@ -96,69 +124,144 @@ There are two types of _fields_ - class variables and object variables which are
 
 **Object variables** are owned by each individual object/instance of the class. In this case, each object has its own copy of the field i.e. they are not shared and are not related in any way to the field by the same name in a different instance. An example will make this easy to understand (save as `oop_objvar.py`):
 
-<pre><code class="lang-python">{% include "./programs/oop_objvar.py" %}</code></pre>
+```python
+class Robot(object):
+    """Represents a robot with a name."""
+
+    #A class variable
+    greet_msgs = {'R2-D2': 'Beep boop boop bee!', 'C-3PO': 'Greetings, master.'}
+
+    def __init__(self, name):
+        #An instance variable
+        self.name = name
+
+    def greetings(self):
+        message = Robot.greet_msgs.get(self.name, '...')
+        print "{}: {}".format(self.name, message)
+
+    @classmethod
+    def available_robots(cls):
+        """Returns which robots are available."""
+        return cls.greet_msgs.keys()
+
+droid1 = Robot("R2-D2")
+droid2 = Robot("C-3PO")
+
+droid1.greetings()
+droid2.greetings()
+
+# Calling the class method:
+print "Available robots:", Robot.available_robots()
+
+# Class methods can also be called on an instance:
+print "Available robots:", droid1.available_robots()
+print "Available robots:", droid2.available_robots()
+```
 
 Output:
 
-<pre><code>{% include "./programs/oop_objvar.txt" %}</code></pre>
+```python
+$ python oop_objvar.py
+R2-D2: Beep boop boop bee!
+C-3PO: Greetings, master.
+Available robots: ['R2-D2', 'C-3PO']
+Available robots: ['R2-D2', 'C-3PO']
+Available robots: ['R2-D2', 'C-3PO']
+```
 
 **How It Works**
 
-This is a long example but helps demonstrate the nature of class and object variables. Here, `population` belongs to the `Robot` class and hence is a class variable. The `name` variable belongs to the object (it is assigned using `self`) and hence is an object variable.
+This example shows the use of a class variable `greetings`, an instance variable `name`, and a classmethod `available_robots`.
 
-Thus, we refer to the `population` class variable as `Robot.population` and not as `self.population`. We refer to the object variable `name` using `self.name` notation in the methods of that object. Remember this simple difference between class and object variables. Also note that an object variable with the same name as a class variable will hide the class variable!
+Inside the `greetings` method we are using both the class variable and the instance variable. The class variable is referred to as `Robot.greetings`, while the instance variable is referred to as `self.name`.
 
-Instead of `Robot.population`, we could have also used `self.__class__.population` because every object refers to it's class via the `self.__class__` attribute.
+We have marked the `available_robots` method as a class method using a "decorator", which we will learn in a later chapter. Decorators are basically a shortcut for adding a wrapper around a function. Applying the `@classmethod` decorator above a method `f` is the same as writing `f = classmethod(f)`.
 
-The `how_many` is actually a method that belongs to the class and not to the object. This means we can define it as either a `classmethod` or a `staticmethod` depending on whether we need to know which class we are part of. Since we refer to a class variable, let's use `classmethod`.
-
-We have marked the `how_many` method as a class method using a [decorator](./more.md#decorator).
-
-Decorators can be imagined to be a shortcut to calling a wrapper function, so applying the `@classmethod` decorator is same as calling:
-
-```python
-how_many = classmethod(how_many)
-```
-
-Observe that the `__init__` method is used to initialize the `Robot` instance with a name. In this method, we increase the `population` count by 1 since we have one more robot being added. Also observe that the values of `self.name` is specific to each object which indicates the nature of object variables.
-
-Remember, that you must refer to the variables and methods of the same object using the `self` *only*. This is called an *attribute reference*.
-
-In this program, we also see the use of *docstrings* for classes as well as methods. We can access the class docstring at runtime using `Robot.__doc__` and the method docstring as `Robot.say_hi.__doc__`
-
-In the `die` method, we simply decrease the `Robot.population` count by 1.
-
-All class members are public. One exception: If you use data members with names using the _double underscore prefix_ such as `__privatevar`, Python uses name-mangling to effectively make it a private variable.
-
-Thus, the convention followed is that any variable that is to be used only within the class or object should begin with an underscore and all other names are public and can be used by other classes/objects. Remember that this is only a convention and is not enforced by Python (except for the double underscore prefix).
-
-> **Note for C++/Java/C# Programmers**
-> 
-> All class members (including the data members) are _public_ and all the methods are _virtual_ in Python.
+This classmethod takes a single argument, `cls`, which is the `Robot` class object itself. We use `cls` to look up `cls.greetings`. We could have also written `Robot.greetings` here.
 
 ## Inheritance
 
 One of the major benefits of object oriented programming is **reuse** of code and one of the ways this is achieved is through the **inheritance** mechanism. Inheritance can be best imagined as implementing a **type and subtype** relationship between classes.
 
-Suppose you want to write a program which has to keep track of the teachers and students in a college. They have some common characteristics such as name, age and address. They also have specific characteristics such as salary, courses and leaves for teachers and, marks and fees for students.
+Suppose you want to write a program which has to keep track of the teachers and students in a college. They have some common characteristics such as name, age, address, etc. They also have specific characteristics that may apply to one but not the other, such as salary, courses, grades, etc. They may also have different kinds of behavior, e.g. students can submit assignments, while teachers grade the assignments.
 
-You can create two independent classes for each type and process them but adding a new common characteristic would mean adding to both of these independent classes. This quickly becomes unwieldy.
+You can create two independent classes for each type and treat everything separately, but adding a new common characteristic would mean adding the code to both of these independent classes. This quickly becomes unwieldy.
 
-A better way would be to create a common class called `SchoolMember` and then have the teacher and student classes _inherit_ from this class i.e. they will become sub-types of this type (class) and then we can add specific characteristics to these sub-types.
+A better way would be to create a common class to represent `Person` with all the common characteristics and behavior, and then have the `Teacher` and `Student` classes _inherit_ from this class to specialize it. The subclasses will become sub-types of the common type and add whatever specific characteristics and behavior are needed.
 
-There are many advantages to this approach. If we add/change any functionality in `SchoolMember`, this is automatically reflected in the subtypes as well. For example, you can add a new ID card field for both teachers and students by simply adding it to the SchoolMember class. However, changes in the subtypes do not affect other subtypes. Another advantage is that if you can refer to a teacher or student object as a `SchoolMember` object which could be useful in some situations such as counting of the number of school members. This is called **polymorphism** where a sub-type can be substituted in any situation where a parent type is expected i.e. the object can be treated as an instance of the parent class.
+There are many advantages to this approach. If we add/change any functionality in `Person`, this is automatically reflected in the subtypes as well. For example, you can add a new ID card field for both teachers and students by simply adding it to the `Person` class. However, changes in the subtypes do not affect other subtypes. Another advantage is that if you can refer to a teacher or student object as a `Person` object which could be useful in some situations such as counting of the number of school members. This is called **polymorphism** where a sub-type can be substituted in any situation where a parent type is expected i.e. the object can be treated as an instance of the parent class.
 
 Also observe that we reuse the code of the parent class and we do not need to repeat it in the different classes as we would have had to in case we had used independent classes.
 
-The `SchoolMember` class in this situation is known as the **base class** or the **superclass**. The `Teacher` and `Student` classes are called the **derived classes** or **subclasses**.
+The `Person` class in this situation is known as the **base class** or **superclass**. The `Teacher` and `Student` classes are called the **derived classes** or **subclasses**.
 
 We will now see this example as a program (save as `oop_subclass.py`):
 
-<pre><code class="lang-python">{% include "./programs/oop_subclass.py" %}</code></pre>
+```python
+class Person(object):
+    def __init__(self, name):
+        self.name = name
+
+    def greetings(self):
+        return "I am {}.".format(self.name)
+
+    def __repr__(self):
+        return '<Person name={!r}>'.format(self.name)
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        Person.__init__(self, name)
+        self.subject = subject
+        self.students = []
+
+    def greetings(self):
+        message = Person.greetings(self)
+        return "Greetings class. {} I will be your {} teacher this semester.".format(message, self.subject)
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def grades(self):
+        out = []
+        for s in self.students:
+            out.append([s.name, s.grade])
+        return out
+
+class Student(Person):
+    def __init__(self, name, grade):
+        Person.__init__(self, name)
+        self.grade = grade
+
+if __name__ == "__main__":
+    t = Teacher('Mr. Garvey', 'Biology')
+    print t.greetings()
+
+    students = [
+        Student('Jacqueline', "A"),
+        Student('Blake', "C"),
+        Student('Denice', "B+"),
+        Student('Aaron', "B"),
+    ]
+    for s in students:
+        print s.greetings()
+        t.add_student(s)
+
+    print "Current grades:"
+    print t.grades()
+```
 
 Output:
 
-<pre><code>{% include "./programs/oop_subclass.txt" %}</code></pre>
+```bash
+$ python oop_objvar.py
+Greetings class. I am Mr. Garvey. I will be your Biology teacher this semester.
+I am Jacqueline.
+I am Blake.
+I am Denice.
+I am Aaron.
+Current grades:
+[['Jacqueline', 'A'], ['Blake', 'C'], ['Denice', 'B+'], ['Aaron', 'B']]
+```
 
 **How It Works**
 
@@ -166,16 +269,12 @@ To use inheritance, we specify the base class names in a tuple following the cla
 
 We also observe that we can call methods of the base class by prefixing the class name to the method call and then pass in the `self` variable along with any arguments.
 
-Notice that we can treat instances of `Teacher` or `Student` as just instances of the `SchoolMember` when we use the `tell` method of the `SchoolMember` class.
+Notice that we can treat instances of `Teacher` or `Student` as just instances of the `Person` classwhen we use the `greetings` method. The `greetings` method is common to all three classes, so it is safe to call from any of them.
 
-Also, observe that the `tell` method of the subtype is called and not the `tell` method of the `SchoolMember` class. One way to understand this is that Python _always_ starts looking for methods in the actual type, which in this case it does. If it could not find the method, it starts looking at the methods belonging to its base classes one by one in the order they are specified in the tuple in the class definition.
+Also, observe that the `greetings` method for `Teacher` extends the behavior of the `greetings` method in `Person`. One way to understand this is that Python _always_ starts looking for methods in the actual type, which in this case exists. If it could not find the method, it starts looking at the methods belonging to its base classes one by one in the order they are specified in the tuple in the class definition.
 
 A note on terminology - if more than one class is listed in the inheritance tuple, then it is called **multiple inheritance**.
-
-The `end` parameter is used in the `print` function in the superclass's `tell()` method to print a line and allow the next print to continue on the same line. This is a trick to make `print` not print a `\n` (newline) symbol at the end of the printing.
 
 ## Summary
 
 We have now explored the various aspects of classes and objects as well as the various terminologies associated with it. We have also seen the benefits and pitfalls of object-oriented programming. Python is highly object-oriented and understanding these concepts carefully will help you a lot in the long run.
-
-Next, we will learn how to deal with input/output and how to access files in Python.
