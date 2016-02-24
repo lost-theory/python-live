@@ -160,7 +160,7 @@ print "Available robots:", droid2.available_robots()
 
 Output:
 
-```python
+```bash
 $ python oop_objvar.py
 R2-D2: Beep boop boop bee!
 C-3PO: Greetings, master.
