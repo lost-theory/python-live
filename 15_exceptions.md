@@ -36,15 +36,15 @@ Python raises an error called `EOFError` which basically means it found an *end 
 
 We can handle exceptions using the `try..except` statement.  We basically put our usual statements within the try-block and put all our error handlers in the except-block.
 
+You should almost never need to use a bare `except:` or `except Exception:` to silence an error. There is typically always a better way to handle it (either being more specific with the exception type you're looking for, or logging extra information about the error, or re-raising the error).
+
+Refer to Python's [exception hierarchy](https://docs.python.org/2/library/exceptions.html#exception-hierarchy) to get a sense of what exceptions are typically used and how they relate to each other.
+
 ## Raising Exceptions
 
 You can _raise_ exceptions using the `raise` statement by providing the name of the error/exception and the exception object that is to be _thrown_.
 
 The error or exception that you can raise should be a class which directly or indirectly must be a derived class of the `Exception` class.
-
-## The `with` statement
-
-Acquiring a resource in the `try` block and subsequently releasing the resource in the `finally` block is a common pattern. The `with` statement was added to Python to automatically handle this pattern. The built-in `file` object can be used in the `with` statement to safely close the file even in the case of errors, without having to write your own error handling code.
 
 ## Summary
 
