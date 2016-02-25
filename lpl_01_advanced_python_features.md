@@ -111,7 +111,7 @@ First we use a conditional expression to build the `full_name` attribute, but on
 
 So far, when we have been writing and using strings, or reading and writing to a file, we have used only simple characters a..z, A..Z, 0..9, a few punctuation marks, and a few control characters like `\n`. These are called the "ASCII" characters.
 
-If you want to be able to read and write non-English languages, we need to use the `unicode` type, which is Python's string datatype for implementing the [Unicode standard](https://en.wikipedia.org/wiki/Unicode). Unicode is a database of thouands of characters which can represent almost every language on Earth (as well as mathematical symbols and things like [emoji](https://en.wikipedia.org/wiki/Emoji#In_the_Unicode_Standard)). Unicode strings start with the character `u` and behave just like the byte strings we have been using:
+If you want to read and write non-English languages, you need to use the `unicode` type, which is Python's string datatype for implementing the [Unicode standard](https://en.wikipedia.org/wiki/Unicode). Unicode is a database of thouands of characters which can represent almost every language on Earth (as well as mathematical symbols and things like [emoji](https://en.wikipedia.org/wiki/Emoji#In_the_Unicode_Standard)). Unicode strings start with the character `u` and behave just like the byte strings we have been using:
 
 ```python
 >>> #byte string:
