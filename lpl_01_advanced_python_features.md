@@ -220,13 +220,100 @@ set([0, 1, 2])
 ## Functional programming
 
 * `lambda`
-* higher-order functions
+* higher-order functions: functions which take a function as an argument and/or functions that return other functions
 * `map`
 * `reduce`
 
 ## Decorators
 
-* `functools.wraps`
+Decorators are functions which are applied to other functions to alter their behavior. The benefit of using a decorator is that this alteration happens without changing the source code of the underlying function. You can use decorators to do things such as intercepting the underlying function's arguments or return value.
+
+The first step to understanding decorators is to understand that functions can be nested in Python, i.e. a function can define and return a function:
+
+```python
+def adder(x):
+    def inner(y):
+        return x + y
+    return inner
+
+>>> adder(5)
+<function inner at 0x10c502578>
+>>> adder(5)(1)
+6
+>>> add5 = adder(5)
+>>> add5(1)
+6
+```
+
+A function can also accept a function as an argument and return a function:
+
+```python
+def decorator(func):
+    return func
+
+def double(x):
+    return x*2
+    
+>>> double(3)
+6
+>>> decorator(double)
+<function double at 0x10c502c80>
+>>> decorator(double)(3)
+6
+>>> double = decorator(double)
+>>> double(3)
+6
+```
+
+Note above how we did `double = decorator(double)` and the function ran exactly the same as it did before. The decorator syntax is just a shortcut for writing this kind of assignment where you wrap a function with another function:
+
+```python
+@decorator
+def double(x):
+    return x*2
+    
+### the above syntax is equivalent to: ###
+
+def double(x):
+    return x*2
+double = decorator(double)
+```
+
+Now, if we nest a function inside our new `decorator` function, as we did with `adder` and `inner`, we start to open the door to some interesting possibilities. First, let's create the equivalent of our current do-nothing decorator using a nested function:
+
+```python
+def decorator(func):
+    def inner(*args, **kwargs):
+        return func(*args, **kwargs)
+    return inner
+```
+
+Now that we have this `inner` function, we have access to the underlying function's arguments and return value. Let's add a print statement before and after we call `func`, as well as inside the `double` function, just to make it clear when each line is executed: 
+
+```python
+def decorator(func):
+    def inner(*args, **kwargs):
+        print "Before:", args, kwargs
+        result = func(*args, **kwargs)
+        print "After:", result
+        return result
+    return inner
+
+@decorator
+def double(x):
+    print "Inside:", x
+    return x*2
+
+>>> double(10)
+Before: (10,) {}
+Inside: 10
+After: 20
+20
+```
+
+From here we can control the execution of the wrapped function: we can alter its arguments, alter the return value, we can choose whether to call the underlying function or not, we could swap it out for a completely different function, we can raise an exception, we can add logging or timing information, etc. The other interesting possibility with decorators is that you can re-use the same decorator for different functions, or stack multiple decorators on top of each other in a single function.
+
+One last tip: use `functools.wraps` to preserve the metadata of the decorated function (e.g. its docstring).
 
 ## `python -i` and `code.interact`
 
