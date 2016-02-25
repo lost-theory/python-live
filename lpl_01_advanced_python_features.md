@@ -161,7 +161,7 @@ $ python -i foo.py
 import code; code.interact(local=locals())
 ```
 
-## `python -mdb` and `pdb.set_trace`
+## `python -mpdb` and `pdb.set_trace`
 
 ```bash
 $ python -mpdb foo.py
