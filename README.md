@@ -2,7 +2,7 @@
 
 This is the repository for Learn Python Live, an accelerated, interactive class teaching Python.
 
-The first half of this material comes from "A Byte of Python", an open source book that teaches programming using the Python language. It was created by [Swaroop C H](http://www.swaroopch.com/) and is available [here](http://python.swaroopch.com/). All credit goes to Swaroop for creating such a great resource for learning Python. The original "A Byte of Python" material has been for forked for use in a class setting. See the bottom section for a list of changes.
+The first half of this material comes from "A Byte of Python", an open source book that teaches programming using the Python language. It was created by [Swaroop C H](http://www.swaroopch.com/) and is available [here](http://python.swaroopch.com/). All credit goes to Swaroop for creating such a great resource for learning Python. The original "A Byte of Python" material has been forked for use in a class setting. See the bottom section for a list of changes.
 
 The second half of the material is new and walks you through more functionality in the standard library, installing open source Python libraries, and writing a simple web application with Flask.
 
@@ -27,10 +27,11 @@ To see the omitted Byte of Python chapters, see the [original book](http://pytho
 
 New material created for Learn Python Live:
 
-* Ch. 1: [Advanced Python features](lpl_01_advanced_python_features.md)
-* Ch. 2: [Useful modules in the standard library](lpl_02_useful_stdlib_modules.md)
-* Ch. 3: [Making HTTP requests and using JSON](lpl_03_http_requests_and_json.md)
-* Ch. 4: [Installing open source libraries](lpl_04_installing_new_modules.md)
+* LPL Ch. 1: [Advanced Python features](lpl_01_advanced_python_features.md)
+* LPL Ch. 2: [Useful modules in the standard library](lpl_02_useful_stdlib_modules.md)
+* LPL Ch. 3: [Making HTTP requests and using JSON](lpl_03_http_requests_and_json.md)
+* LPL Ch. 4: [Installing open source libraries](lpl_04_installing_new_modules.md)
+* (Flask chapters coming soon)
 
 ## License
 
@@ -56,4 +57,4 @@ Please note:
 * Put Ch. 11 (Data Structures) ahead of Ch. 10 (Modules) so we can write a program using simple values, conditions, loops, functions, and lists/dicts without needing to learn about modules yet. Ch. 10 (Modules) will then be our stepping stone to the standard library and writing larger programs.
 * Put Ch. 14 (IO using files) ahead of Ch. 13 (OOP) so we can teach files first and then teach OOP on its own as a larger subject.
 * Some small edits and paring down of chapter content to make it easier to teach interactively.
-* Removed example programs (they are available in the original repo [here](https://github.com/swaroopch/byte-of-python/tree/master/programs)), example code is now embedded directly into the chapters (to make it easier to browse the book directly on Github).
+* Removed and rewrote example code (original BoP code is available [here](https://github.com/swaroopch/byte-of-python/tree/master/programs)). Example code is now embedded directly into the chapters to make it easier to browse the book directly on Github.
