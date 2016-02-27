@@ -562,7 +562,7 @@ Checking connectivity... done.
 0
 ```
 
-There are two things to note. **First**, we had to pass a list of strings to run the command. This is a protection against a vulnerability called "shell injection". By default, the `subprocess` module will only allow a single command to run, and it will try to escape any dangerous input passed into the command. Even in this case where we know the input is safe, we still have to ues a list of strings intead of the single string we typed in on the command line. There are ways around this, but they should be avoided if possible. **Second**, the other thing to notice is that the `result` returned is `0`. In unix systems, an exit code of `0` means success, while any other number indicates an error (and different numbers represent different kinds of errors). So we know our command was successful in this case.
+There are two things to note. **First**, we had to pass a list of strings to run the command. This is a protection against a vulnerability called "shell injection". By default, the `subprocess` module will only allow a single command to run, and it will try to escape any dangerous input passed into the command. Even in this case where we know the input is safe, we still have to use a list of strings intead of the single string we typed in on the command line. There are ways around this, but they should be avoided if possible. **Second**, the other thing to notice is that the `result` returned is `0`. In unix systems, an exit code of `0` means success, while any other number indicates an error (and different numbers represent different kinds of errors). So we know our command was successful in this case.
 
 What happens if we try to run the same command twice? It will throw an error because the directory already exists.
 
@@ -573,7 +573,7 @@ fatal: destination path 'ex3' already exists and is not an empty directory.
 128
 ```
 
-It failed with exit code `128`. So, we can use the exit code to determine success vs. failure. Now let's try the `ls` command:
+It returned an exit code of `128`, which is one of `git`'s exit codes for failures. Now let's try the `ls` command:
 
 ```python
 >>> result = subprocess.call(["ls"], cwd="ex3")
@@ -582,7 +582,7 @@ ex3.py  ex3_data.json  ex3_data.py
 0
 ```
 
-The thing to note here is that we used a `cwd` parameter to tell it which directory to execute the command in. Normally when you're working on the shell, you `cd` into different directories and run commands on the current directory. The `subprocess` module spawns a brand new shell for every command it runs, so there's no concept of `cd`-ing to a directory between commands and having that state persist between calls.
+The new thing to note here is that we used a `cwd` parameter to tell it which directory to execute the command in. Normally when you're working on the shell, you `cd` into different directories, modify environment variables, and run commands based on whatever the current "state" of the environment is. Although you can do the same in Python with `os.chdir` and `os.environ` (see the `os` section below), the current directory and environment variables are pieces of *global implicit state*, which are difficult to reason about since they can be modified or accessed from anywhere in your program. To avoid that global implicit state you can use the `cwd` and `env` to be explicit about these two pieces of state that the command depends on.
 
 The exit code is important, but what if we want to grab the output of the command? We can use the `check_output` function instead of `call` to get the output:
 
@@ -640,7 +640,7 @@ Hmmm... We can see the exit code of `128`, but no error output. This is due to t
 "fatal: destination path 'ex3' already exists and is not an empty directory.\n"
 ```
 
-If you want to keep `stdout` and `stderr` separate you need to use the more verbose (and slightly more powerful) [`subprocess.Popen` object](https://docs.python.org/2/library/subprocess.html#subprocess.Popen).
+If you want to keep `stdout` and `stderr` separate you need to use the more verbose (and more powerful) [`subprocess.Popen` object](https://docs.python.org/2/library/subprocess.html#subprocess.Popen).
 
 ## Working with the filesystem (`os`, `os.path`, `glob`)
 
@@ -657,10 +657,10 @@ Traceback (most recent call last):
 OSError: [Errno 2] No such file or directory: 'this-doesnt-exist'
 ```
 
-Unlike the `subprocess` module that executed everything in a new shell, the functions in `os` do track your current state, and the `chdir` function is the equivalent to the shell's `cd`:
+While we used the `cwd` parameter in `subprocess` to control the current directory, you can use the `chdir` function to do the equivalent of the shell's `cd` command:
 
 ```python
->>> os.getcwd()
+>>> os.getcwd() #what's our current directory?
 '/home/Steven'
 >>> os.chdir("ex3")
 >>> os.getcwd()
@@ -721,9 +721,25 @@ posix.stat_result(st_mode=33188, st_ino=7318349394662898, st_dev=4062798683, st_
 'Sun Feb 21 22:17:16 2016'
 ```
 
+Use the `os.environ` object to get and set environment variables through a dictionary interface:
+
+```python
+>>> os.environ['HOME']
+'/home/Steven'
+>>> os.environ['EDITOR']
+'vim'
+>>> os.environ.keys()
+['LESSOPEN', 'LOGNAME', 'USER', 'HOME', 'PATH', 'TERM', 'SHELL', 'SHLVL', 'PWD', 'EDITOR', ...]
+>>> del os.environ['EDITOR']
+>>> os.environ.get('EDITOR')
+>>> os.environ.get('EDITOR', 'nano')
+'nano'
+```
+
 So far most of these have been pretty low level. The `os` module provides one higher level function called `walk` which can be used to iterate over all the files and directories, recursively, starting in the given directory:
 
 ```python
+>>> walk = os.walk('.')
 >>> walk.next()
 ('.', ['.git'], ['ex3_data.json', 'ex3_data.py'])
 >>> walk.next()
@@ -732,7 +748,7 @@ So far most of these have been pretty low level. The `os` module provides one hi
 ('./.git/hooks', [], ['applypatch-msg.sample', 'commit-msg.sample', 'post-update.sample', 'pre-applypatch.sample', 'pre-commit.sample', 'pre-push.sample', 'pre-rebase.sample', 'prepare-commit-msg.sample', 'update.sample'])
 ```
 
-There is also a submodule within `os` called `os.path` which provides a few higher level functions:
+There is also a submodule within `os` called `os.path` which provides a few higher level functions to operate on paths:
 
 ```python
 >>> os.path.join("/home/Steven", "ex3")
@@ -753,7 +769,7 @@ True
 ('/home/Steven', 'ex3')
 ```
 
-Lastly, here is one more piece of functionality that is commonly used on the command line: wildcard patterns using `glob.glob`. It can be used to match multiple files and directories in the given path:
+Here is one more piece of functionality that is commonly used on the command line: wildcard patterns using `glob.glob`. It can be used to match multiple files and directories in the given path:
 
 ```python
 >>> import glob
