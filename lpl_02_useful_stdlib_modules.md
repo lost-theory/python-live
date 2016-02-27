@@ -338,7 +338,7 @@ Did you know that up until Python 2.0, all the string methods were contained ins
 '\t\n\x0b\x0c\r '
 ```
 
-## Regex (`re`)
+## Regular expressions (`re`)
 
 Regular expressions or "regexes" are a powerful method for matching strings against patterns. "Wildcard" patterns such as `*.txt` are a similar idea, except regexes are **much** more powerful. Many languages implement regexes, and Python's regex functionality lives in the `re` module. This document is too small to cover the full regex language, see the [official Python docs on `re`](https://docs.python.org/2/library/re.html#regular-expression-syntax) for details. Instead we will walk through each of the major functions provided by the `re` module.
 
