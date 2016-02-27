@@ -168,7 +168,7 @@ As with the `time` module, it is highly recommended to use **UTC** (via `utcnow`
 
 ## `random`
 
-Randomness is very useful in programming. It has applications in cryptography, probability, statistics, simulations, games, systems, and [much more](https://en.wikipedia.org/wiki/Applications_of_randomness). Let's walk through the various methods in Python's `random` module:
+Randomness is very useful in programming. It has applications in cryptography, probability, statistics, simulations, games, systems, and [much more](https://en.wikipedia.org/wiki/Applications_of_randomness). Let's walk through the various functions in Python's `random` module:
 
 ```python
 >>> import random
@@ -421,22 +421,22 @@ No phone number.
 {'begin': '800', 'end': '4357', 'mid': '222'}
 ```
 
-That is about all you need to to use `search` and `match`. Now let's look at the remaining methods: `split`, `findall`, `finditer`, and `sub`:
+That is about all you need to to use `search` and `match`. Now let's look at the remaining functions: `split`, `findall`, `finditer`, and `sub`:
 
 ```python
->>> #First, the `split` method is like `str.split`, except it splits on a pattern.
+>>> #The `split` function is like `str.split`, except it splits on a pattern.
 >>> #Let's say we want to split a string into pieces based on punctuation.
 >>> re.split("[.,!()]", "Yeah! Let's do the split. Everyone (that means you).")
 ['Yeah', " Let's do the split", ' Everyone ', 'that means you', '', '']
 
->>> #Next, `findall` works like `search`, except instead of returning a single
->>> #match, it will return a list of all the matched strings.
+>>> #The `findall` function works like `search`, except instead of returning
+>>> #a single match, it will return a list of all the matched strings.
 >>> re.findall("\d{3}-\d{3}-\d{4}", "Alice: 1-555-234-1357. Bob: 1-555-641-2468. Pizza place: 1-800-555-9999.")
 ['555-234-1357', '555-641-2468', '800-555-9999']
 
 >>> #That's handy, but what if we had numbered / named groups? For those we
->>> #want the underlying Match objects. `finditer` will return an iterator
->>> #of the Match objects.
+>>> #want the underlying Match objects. The `finditer` function will return
+>>> #an iterator with each of the Match objects.
 >>> matches = re.finditer("(\d{3})-(\d{3})-(\d{4})", "Alice: 1-555-234-1357. Bob: 1-555-641-2468.")
 >>> for m in matches:
 ...     print m.groups()
@@ -444,10 +444,11 @@ That is about all you need to to use `search` and `match`. Now let's look at the
 ('555', '234', '1357')
 ('555', '641', '2468')
 
->>> #Finally, the `sub` method works a lot like `str.replace`, except it picks
+>>> #Finally, the `sub` function works a lot like `str.replace`, except it picks
 >>> #what to replace based on a pattern.
 >>> re.sub("\d{3}-\d{3}-\d{4}", "[REDACTED]", "First I tried 555-234-1357, then 555-641-2468.")
 'First I tried [REDACTED], then [REDACTED].'
+
 >>> #There's also a really neat feature where you can pass a function for the `repl`
 >>> #argument. This function takes a match object and returns a string. Let's say
 >>> #we want to replace each phone number with the corresponding person's name.
@@ -523,7 +524,7 @@ And let's read it back in using `csv.reader`:
 
 It returned all the numbers as strings! That's a little unfortunate, but it matches up with what the [docs](https://docs.python.org/2/library/csv.html) say: "No automatic data type conversion is performed".  We have to handle our own validation and conversion of the data inside a CSV file.
 
-Now, you may be thinking: this "CSV" stuff looks pretty simple, I can just put a bunch of commas between some strings and get the same result. While that's true for this simple example, CSV has some trickiness when you start including strings with special characters like commas and quotes, or when two different programs have slightly different ways of representing those special characters. The `csv` module handles this trickiness for you. It also has some helpers for reading and writing dictionaries instead of lists (see [`DictReader`](https://docs.python.org/2/library/csv.html#csv.DictReader) and [`DictWriter`](https://docs.python.org/2/library/csv.html#csv.DictWriter)), including automatically picking up on a "header" row.
+Now, you may be thinking: this "CSV" stuff looks pretty simple, I can just put a bunch of commas between some strings and get the same result. While that's true for this simple example, CSV has some trickiness when your values include special characters like commas, quotes, and newlines, or when two different programs have slightly different ways of representing those special characters. The `csv` module handles this trickiness for you. It also has some helpers for reading and writing dictionaries instead of lists (see [`DictReader`](https://docs.python.org/2/library/csv.html#csv.DictReader) and [`DictWriter`](https://docs.python.org/2/library/csv.html#csv.DictWriter)), including automatic handling of a "header" row.
 
 ## Calling other programs (`subprocess`)
 
