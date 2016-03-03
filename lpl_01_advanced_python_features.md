@@ -221,8 +221,8 @@ set([0, 1, 2])
 
 * `lambda`
 * higher-order functions: functions which take a function as an argument and/or functions that return other functions
-* `map`
-* `reduce`
+  * e.g. the `key` argument to `sorted`
+* `map` / `reduce` / `filter`
 
 ## Decorators
 
