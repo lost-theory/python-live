@@ -1,6 +1,6 @@
 ## Advanced Python features
 
-A Byte of Python teaches the basic syntax and features of Python. Here is a brief tour of a few more advanced features of the language.
+A Byte of Python teaches the basic syntax and features of Python. Here is a brief tour of a few more advanced features of the language or things that aren't covered in the book.
 
 ## Truthiness
 
@@ -219,10 +219,9 @@ set([0, 1, 2])
 
 ## Functional programming
 
-* `lambda`
-* higher-order functions: functions which take a function as an argument and/or functions that return other functions
-  * e.g. the `key` argument to `sorted`
-* `map` / `reduce` / `filter`
+* `lambda` allows you to write an "anonymous" function as part of an expression.
+* `map` / `reduce` / `filter` are common constructs in FP.
+* Higher-order functions: These are functions that either take a function as an argument or return a function (or both).
 
 ## Decorators
 
@@ -271,7 +270,7 @@ Note above how we did `double = decorator(double)` and the function ran exactly 
 @decorator
 def double(x):
     return x*2
-    
+
 ### the above syntax is equivalent to: ###
 
 def double(x):
@@ -288,7 +287,7 @@ def decorator(func):
     return inner
 ```
 
-Now that we have this `inner` function, we have access to the underlying function's arguments and return value. Let's add a print statement before and after we call `func`, as well as inside the `double` function, just to make it clear when each line is executed: 
+Now that we have this `inner` function, we have access to 1. the underlying function's arguments, 2. its return value, and 3. the function object itself, `func`. Let's add a print statement before and after we call `func`, as well as inside the `double` function, just to make it clear when each line is executed:
 
 ```python
 def decorator(func):
@@ -311,9 +310,15 @@ After: 20
 20
 ```
 
-From here we can control the execution of the wrapped function: we can alter its arguments, alter the return value, we can choose whether to call the underlying function or not, we could swap it out for a completely different function, we can raise an exception, we can add logging or timing information, etc. The other interesting possibility with decorators is that you can re-use the same decorator for different functions, or stack multiple decorators on top of each other in a single function.
+From here we can control the execution of the wrapped function: we can inspect and alter its arguments or return value, we can choose whether to call the underlying function or not, we could swap it out for a completely different function, we can raise/handle/wrap exceptions, we can add logging or collect timing information, etc.
 
-One last tip: use `functools.wraps` to preserve the metadata of the decorated function (e.g. its docstring).
+One reason for using decorators is that since the decorator is independent of the underlying function, it can be re-used across many different functions. Decorators are independent "concerns" that can apply in many places (logging is a classic example).
+
+Another thing that falls out of decorators being independent of the underlying function is that we can stack multiple decorators on top of a single function, to add multiple bits of new behavior. For example, we could add two decorators to a single function, one for validating its arguments, and another for emitting logging information.
+
+One advanced usage of decorators is allowing the decorator to take in its own arguments. They are implemented similarly to the above doubly nested functions, except in order to take in an argument there must be **three** levels of nesting. That third level of nesting is what allows the outermost function to accept an argument and return a new decorator. The [`route`](http://flask.pocoo.org/docs/0.10/api/#flask.Flask.route) method in Flask is a practical example of a decorator which takes arguments.
+
+One final tip: use [`functools.wraps`](https://docs.python.org/2/library/functools.html#functools.wraps) to preserve the metadata of the decorated function (e.g. its docstring).
 
 ## `python -i` and `code.interact`
 

@@ -795,14 +795,15 @@ Then go to http://127.0.0.1:8000/ in your browser and start clicking around on t
 
 Still hungry for more stdlib modules? Here are a few useful modules that didn't make the cut:
 
-* [itertools](https://docs.python.org/2/library/itertools.html)
-* [functools](https://docs.python.org/2/library/functools.html)
-* [logging](https://docs.python.org/2/library/logging.html)
-* [unittest](https://docs.python.org/2/library/unittest.html)
-* [doctest](https://docs.python.org/2/library/doctest.html)
+* [argparse](https://docs.python.org/2/library/argparse.html)
 * [collections](https://docs.python.org/2/library/collections.html)
 * [decimal](https://docs.python.org/2/library/decimal.html)
+* [doctest](https://docs.python.org/2/library/doctest.html)
+* [functools](https://docs.python.org/2/library/functools.html)
 * [hashlib](https://docs.python.org/2/library/hashlib.html)
-* [tempfile](https://docs.python.org/2/library/tempfile.html)
+* [itertools](https://docs.python.org/2/library/itertools.html)
+* [logging](https://docs.python.org/2/library/logging.html)
 * [StringIO](https://docs.python.org/2/library/stringio.html)
 * [struct](https://docs.python.org/2/library/struct.html)
+* [tempfile](https://docs.python.org/2/library/tempfile.html)
+* [unittest](https://docs.python.org/2/library/unittest.html)
