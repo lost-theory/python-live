@@ -42,6 +42,7 @@ If you run that code, you'll see the string is quite large! That's 66k character
 Let's see if we can find this section in the `page` string. First, let's search for the text "On_this_day", and then slice off the next 500 characters, just to see what it looks like:
 
 ```python
+>>> start = page.find('On_this_day')
 >>> print page[start:start+500]
 On_this_day...">On this day...</span></h2>
 </td>
