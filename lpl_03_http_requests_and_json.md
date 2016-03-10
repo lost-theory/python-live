@@ -10,7 +10,7 @@ Let's visit the home page of Wikipedia in our browser:
 
 https://en.wikipedia.org/wiki/Main_Page
 
-Right click on the page and click "View source" or "View page source". This is the underlying HTML, CSS, and JavaScript code for the page you are viewing. We can make the same request in Python by using the `urlopen` function (provided by [`urllib`](https://docs.python.org/2/library/urllib.html) in Python 2 and [`urllib.request`](https://docs.python.org/3/howto/urllib2.html) in Python 3):
+Right click on the page and click "View source" or "View page source". This is the underlying HTML, CSS, and JavaScript code for the page you are viewing. We can make the same request in Python by using the `urlopen` function (provided by [`urllib`](https://docs.python.org/2/library/urllib.html) in Python 2 and [`urllib.request`](https://docs.python.org/3/library/urllib.request.html#module-urllib.request) in Python 3):
 
 ```python
 >>> import urllib
@@ -18,10 +18,10 @@ Right click on the page and click "View source" or "View page source". This is t
 >>> response
 <addinfourl at 7696578914712 whose fp = <socket._fileobject object at 0x6ffffe02ed0>>
 >>> dir(response)
-['__doc__', '__init__', '__iter__', '__module__', '__repr__', 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
+[..., 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
 ```
 
-> **Note**: The use of `urlopen` here is just to get us up and running quickly using Python's standard library. In the "Installing open source libraries" chapter we will learn how to install the `requests` package, which is much more powerful than `urlopen` and just as simple to use, particularly for sending data via HTTP.
+> **Note**: The use of `urlopen` here is just to get us up and running quickly using Python's standard library. The open source [`requests`](https://pypi.python.org/pypi/requests) package is much more powerful than `urlopen` and just as simple to use. You can follow the instructions in [LPL Ch. 4 "Installing open source libraries"](lpl_04_installing_new_modules) to install it. 
 
 The `response` object returned by `urlopen` is what is called a "file-like" object. From the `dir` call we can see it has many of the same methods as the `file` type, like `read` and `close`. Let's try `read`-ing it:
 
