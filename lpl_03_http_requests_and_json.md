@@ -21,7 +21,7 @@ Right click on the page and click "View source" or "View page source". This is t
 [..., 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
 ```
 
-> **Note**: The use of `urlopen` here is just to get us up and running quickly using Python's standard library. The open source [`requests`](https://pypi.python.org/pypi/requests) package is much more powerful than `urlopen` and just as simple to use. You can follow the instructions in [LPL Ch. 4 "Installing open source libraries"](lpl_04_installing_new_modules) to install it. 
+> **Note**: The use of `urlopen` here is just to get us up and running quickly using Python's standard library. The open source [`requests`](https://pypi.python.org/pypi/requests) package is much more powerful than `urlopen` and just as simple to use. You can follow the instructions in [LPL Ch. 4 "Installing open source libraries"](lpl_04_installing_new_modules.md) to install it. 
 
 The `response` object returned by `urlopen` is what is called a "file-like" object. From the `dir` call we can see it has many of the same methods as the `file` type, like `read` and `close`. Let's try `read`-ing it:
 
