@@ -11,7 +11,7 @@ The second half of the material is new and walks you through more functionality 
 Byte of Python chapters:
 
 * BoP Ch. 3: [About Python](03_about_python.md) (skip this if you want to start coding right away)
-* BoP Ch. 4: [Installation](04_installation.md) (skip if you are using Koding.com)
+* BoP Ch. 4: [Installation](04_installation.md) (skip if you are using an online IDE like c9.io, Nitrous, or Koding)
 * BoP Ch. 5: [First Steps](05_first_steps.md)
 * BoP Ch. 6: [Basics](06_basics.md)
 * BoP Ch. 7: [Operators and Expressions](07_op_exp.md)

@@ -18,7 +18,7 @@ $ virtualenv --version
 
 If either of those complain that the command is not found, then you will need to install the tools that are missing:
 
-* If you are using Koding.com or Ubuntu, the command to use is: `sudo apt-get install -y python-virtualenv`. This will install both `pip` and `virtualenv`.
+* If you are using Ubuntu (the default for c9.io, Nitrous, and Koding), the command to use is: `sudo apt-get install -y python-virtualenv`. This will install both `pip` and `virtualenv`.
 * If the `pip` command above succeeded, run `pip install virtualenv` to get Virtualenv.
 * If the `pip` command failed, [download and run `get-pip.py`](https://pip.pypa.io/en/stable/installing/), then run `pip install virtualenv`.
 * Another option is to install a newer version of Python. Python versions >=2.7.9 and >=3.4 both have `pip` installed by default. You can download the latest version of Python from the [official downloads page](https://www.python.org/downloads/).
