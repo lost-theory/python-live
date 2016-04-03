@@ -108,7 +108,7 @@ MarkupSafe==0.23
 Werkzeug==0.11.4
 ```
 
-This version information is useful when you want to share your project with another person (e.g. making it open source, or sharing with a coworker) or when you want to deploy the project to another machine. These versions are the the specific dependencies needed to run your project. You can dump this information to a simple [requirements text file](https://pip.pypa.io/en/stable/user_guide/#requirements-files) or specify them in [setup.py](http://python-packaging-user-guide.readthedocs.org/en/latest/requirements/#install-requires).
+This version information is useful when you want to share your project with another person (e.g. making it open source, or sharing with a coworker) or when you want to deploy the project to another machine. These versions are the specific dependencies needed to run your project. You can dump this information to a simple [requirements text file](https://pip.pypa.io/en/stable/user_guide/#requirements-files) or specify them in [setup.py](http://python-packaging-user-guide.readthedocs.org/en/latest/requirements/#install-requires).
 
 Lastly, use `pip help` to get more information on other subcommands and their usage.
 
