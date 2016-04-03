@@ -116,7 +116,7 @@ Now, how do we find what packages are available?
 
 ## PyPI: The Python Package Index
 
-Notice above that we just specified "flask" and the `pip install` command automatically knew what package we were talking about. How did `pip` know that? By default, `pip` knows how to search [PyPI](https://pypi.python.org/pypi), the Python Package Index. PyPI is the official central repository of packages run by the Python Software Foundation. It is where you go to find most open sources packages.
+Notice above that we just specified "flask" and the `pip install` command automatically knew what package we were talking about. How did `pip` know that? By default, `pip` knows how to search [PyPI](https://pypi.python.org/pypi), the Python Package Index. PyPI is the official central repository of packages run by the Python Software Foundation. It is where you go to find most open source Python packages.
 
 Let's look at [Flask's entry on PyPI](https://pypi.python.org/pypi/Flask). We can see a brief description of the package, some links to the homepage / source code / documentation, information on the latest version, a link to download the package, and some additional metadata like what platform it supports or what categories it falls under. The `pip` command uses PyPI's API to search this package information, download the files, and install them for you.
 
