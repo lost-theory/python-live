@@ -94,7 +94,7 @@ A Python program is composed of _statements_. In our first program, we have only
 
 ## Getting Help
 
-If you need quick information about any function or statement in Python, then you can use the built-in `help` functionality. This is very useful especially when using the interpreter prompt. For example, run `help('len')` - this displays the help for the `len` function which is used to count number of items.
+If you need quick information about any function or statement in Python, then you can use the built-in `help` functionality. This is very useful especially when using the interpreter prompt. For example, run `help(len)`. This will display information on the `len` function, which is used to count number of items in a collection.
 
 TIP: Press `q` to exit the help.
 
