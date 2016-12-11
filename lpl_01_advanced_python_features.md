@@ -146,7 +146,7 @@ u'Greek: \u03ba\u1f79\u03c3\u03bc\u03b5'
 For more information on encoding and decoding unicode strings vs. byte strings, see the following resources:
 
 * [Python Unicode Howto](http://docs.python.org/2/howto/unicode.html)
-* [Pragmatic Unicode talk by Nat Batchelder](http://nedbatchelder.com/text/unipain.html)
+* [Pragmatic Unicode talk by Ned Batchelder](http://nedbatchelder.com/text/unipain.html)
 
 ## More container types
 
