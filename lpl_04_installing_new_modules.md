@@ -1,6 +1,6 @@
 ## Installing open source modules
 
-Python's built-in functionality and standard library is great, but there's an even larger library of modules in the open source community. Python is used in many fields: web apps, science, data analysis, machine learning, embedded programming, network programming, GUI / desktop applications, automation, etc. By installing new packages from Python's open source community you can tap into these fields and be way more productive than if you were building everything yourself from scratch.
+Python's built-in functionality and standard library are great, but there's an even larger library of modules available in the open source community. Python is used in many fields: web apps, science, data analysis, machine learning, embedded programming, network programming, GUI / desktop applications, automation, etc. By installing new packages from Python's open source community you can tap into these fields and be way more productive than if you were building everything yourself from scratch.
 
 To install packages, we are going to use two tools: `virtualenv` and `pip`. First let's make sure these two tools are installed, then we'll talk about what they're used for.
 
@@ -35,7 +35,7 @@ By default, when you install a package, it goes to your system-wide Python insta
 
 If you use `virtualenv`s instead of the system-wide install, you can create a new environment for each project, install your packages there, and avoid this problem altogether! If you run into any packaging problems it's easy to throw a virtualenv away and recreate it. It's slightly more work, but will save you time and frustration later! Virtualenvs are also commonly used when deploying Python applications in a production environment.
 
-The basic command you need to get started is the one that creates a new virtualenv: `virtualenv path_to_directory`. I usually create my virtualenvs in my home directory with the name `projectname_env`. This is just my personal preference, feel free to place them or name them with whatever makes sense to you.
+The basic command you need to get started is the one that creates a new virtualenv: `virtualenv path_to_directory`. I usually create my virtualenvs in my home directory with the name `projectname_env`. This is just my personal preference, feel free to place them wherever makes sense to you.
 
 ```
 $ virtualenv ~/someproject_env
@@ -43,7 +43,7 @@ New python executable in /home/Steven/someproject_env/bin/python
 Installing setuptools, pip...done.
 ```
 
-After that, to use the virtualenv you just refer to the `python` bin inside the virtualenv instead of the system-wide `python` command we have been using up until now. Compare the contents of `sys.path` (the list of directories used by the interpreter to locate packages) inside and outside the virtualenv:
+After that, to use the virtualenv you just refer to the `python` executable inside the virtualenv instead of the system-wide `python` executable we have been using up until now. Compare the contents of `sys.path` (the list of directories used by the interpreter to locate packages) inside and outside the virtualenv:
 
 ```
 $ ~/someproject_env/bin/python
@@ -67,7 +67,7 @@ Now that we have a virtualenv, let's install some packages into it!
 
 ## Pip: Installing and managing packages
 
-Inside our virtualenv, we should have a `pip` command:
+Pip is a tool used to install new packages. Inside our virtualenv, we should have a `pip` command:
 
 ```
 $ something_env/bin/pip --version
@@ -120,7 +120,7 @@ Notice above that we just specified "flask" and the `pip install` command automa
 
 Let's look at [Flask's entry on PyPI](https://pypi.python.org/pypi/Flask). We can see a brief description of the package, some links to the homepage / source code / documentation, information on the latest version, a link to download the package, and some additional metadata like what platform it supports or what categories it falls under. The `pip` command uses PyPI's API to search this package information, download the files, and install them for you.
 
-If you aren't sure of a package's name, try searching for it on PyPI to confirm the name, then `pip install` it. If you're trying to find a new package to solve some problem you're having, you could try searching PyPI for a few keywords, browsing the [categories](https://pypi.python.org/pypi?%3Aaction=browse), looking at popularity rankings on [pypi-ranking.info](http://pypi-ranking.info/alltime) or [py3readiness.org](http://py3readiness.org/), or searching Google / StackOverflow / mailing lists / etc. for package recommendations.
+If you aren't sure of a package's name, try searching for it on PyPI to confirm the name, then `pip install` it. If you're trying to find a new package to solve some problem you're having, you could try searching PyPI for a few keywords, browsing the [categories](https://pypi.org/search/), looking at popular packages, or searching Google / StackOverflow / mailing lists / etc. for package recommendations.
 
 ## Installing packages from source
 
