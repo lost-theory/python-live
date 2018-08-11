@@ -22,7 +22,7 @@ Here is a quick overview of the available operators. First, the arithmetic opera
     - Adds two values
     - Numeric addition: `3 + 5` gives `8`, `3 + 5.0` gives `8.0`
     - String addition (concatenation): `'a' + 'b'` gives `'ab'`.
-    - You can not mix strings and integers.
+    - You cannot mix strings and integers when using the `+` operator.
 
 - `-` (minus)
     - Subtracts one number from another.
