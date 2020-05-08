@@ -31,7 +31,11 @@ New material created for Learn Python Live:
 * LPL Ch. 2: [Useful modules in the standard library](lpl_02_useful_stdlib_modules.md)
 * LPL Ch. 3: [Making HTTP requests and using JSON](lpl_03_http_requests_and_json.md)
 * LPL Ch. 4: [Installing open source libraries](lpl_04_installing_new_modules.md)
-* (Flask chapters coming soon)
+* The course material for the Flask chapters is here:
+  * [Flask and Flask-SQLAlchemy basics](https://gist.github.com/lost-theory/eb6081f44bea453ac829c5bbf7a60976#class-1-flask-review-and-flask-sqlalchemy)
+  * [Advanced Flask-SQLAlchemy, Flask-Admin, view decorators, and class-based views](https://gist.github.com/lost-theory/eb6081f44bea453ac829c5bbf7a60976#file-02_day2-md)
+  * [Flask Blueprints, Flask-Migrate, and testing](https://gist.github.com/lost-theory/eb6081f44bea453ac829c5bbf7a60976#file-03_day3-md)
+  * [Generating and validating forms with wtforms, and deploying to production](https://gist.github.com/lost-theory/eb6081f44bea453ac829c5bbf7a60976#file-04_day4-md)
 
 ## License
 
